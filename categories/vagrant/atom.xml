@@ -4,7 +4,7 @@
   <title><![CDATA[Category: vagrant | Sandors Systems Scribbles]]></title>
   <link href="http://e30chris.github.io/categories/vagrant/atom.xml" rel="self"/>
   <link href="http://e30chris.github.io/"/>
-  <updated>2013-11-12T21:00:16-08:00</updated>
+  <updated>2013-11-12T21:02:46-08:00</updated>
   <id>http://e30chris.github.io/</id>
   <author>
     <name><![CDATA[chris]]></name>
@@ -12,6 +12,43 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Auto Update VirtualBox Guest Additions with vagrant-vbguest]]></title>
+    <link href="http://e30chris.github.io/auto-update-virtualbox-guest-additions-with-vagrant-vbguest/"/>
+    <updated>2013-11-12T21:01:00-08:00</updated>
+    <id>http://e30chris.github.io/auto-update-virtualbox-guest-additions-with-vagrant-vbguest</id>
+    <content type="html"><![CDATA[<h2>The Goal</h2>
+
+<ul>
+<li>Keep the VirtualBox guest additions at the latest version using <a href="https://github.com/dotless-de/vagrant-vbguest">vagrant-vbguest</a> built by <a href="https://github.com/dotless-de">dotless-de</a>.</li>
+</ul>
+
+
+<!-- more -->
+
+
+<h2>vagrant-vbguest</h2>
+
+<p>A beautifully simple Vagrant plugin to manage the guest additions on VirtualBox.</p>
+
+<h2>install</h2>
+
+<p><code>
+spudBud@pineApplez&gt; ~/Codestuff/vagrants/PuppetMaster $vagrant plugin install vagrant-vbguest
+</code></p>
+
+<h2>bootup usage</h2>
+
+<p>vagrant-vbguest will run on every <code>vagrant up</code> or on a <code>vagrant reload</code> unless you specifically tell it not to.</p>
+
+<h2>running VM usage</h2>
+
+<p><code>
+spudBud@pineApplez&gt; vagrant vbguest --status
+</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[vanilla vagrant setup]]></title>
