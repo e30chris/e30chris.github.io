@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: puppet | Sandors Systems Scribbles]]></title>
+  <link href="http://e30chris.github.io/categories/puppet/atom.xml" rel="self"/>
+  <link href="http://e30chris.github.io/"/>
+  <updated>2013-11-12T21:05:19-08:00</updated>
+  <id>http://e30chris.github.io/</id>
+  <author>
+    <name><![CDATA[chris]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[puppet vim setup]]></title>
+    <link href="http://e30chris.github.io/puppet-vim-setup/"/>
+    <updated>2013-11-12T21:04:00-08:00</updated>
+    <id>http://e30chris.github.io/puppet-vim-setup</id>
+    <content type="html"><![CDATA[<h2>The Goal</h2>
+
+<p>Setup vim to edit Puppet Manifests using a few good tools that will get you to pass Puppet Lint tests.</p>
+
+<!-- more -->
+
+
+<h2>Vim-Pathogen</h2>
+
+<p>Vim-Pathogen on <a href="https://github.com/tpope/vim-pathogen" title="vim-pathogen">github</a></p>
+
+<p><code>
+[root@Argon ~]# mkdir -p ~/.vim/autoload ~/.vim/bundle
+[root@Argon ~]# cd ~/.vim/autoload
+[root@Argon ~]# curl -o pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+</code>
+Add these settings to .vimrc</p>
+
+<p><code>
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
+</code></p>
+
+<h2>Vim-Puppet</h2>
+
+<p>Vim-Puppet on <a href="https://github.com/rodjek/vim-puppet" title="vim-puppet">github</a></p>
+
+<p><code>
+[root@Argon ~]# cd ~/.vim/bundle
+[root@Argon ~]# git clone git://github.com/rodjek/vim-puppet.git
+</code></p>
+
+<h2>Tabular</h2>
+
+<p>Tabular on <a href="https://github.com/godlygeek/tabular" title="tabular">github</a></p>
+
+<p><code>
+[root@Argon ~]# cd ~/.vim/bundle
+[root@Argon ~]# git clone git://github.com/godlygeek/tabular.git
+</code></p>
+
+<h2>Syntastic</h2>
+
+<p>Syntastic on <a href="https://github.com/scrooloose/syntastic" title="syntastic">github</a></p>
+
+<p><code>
+[root@Argon ~]# cd ~/.vim/bundle
+[root@Argon ~]# git clone https://github.com/scrooloose/syntastic.git
+</code></p>
+]]></content>
+  </entry>
+  
+</feed>

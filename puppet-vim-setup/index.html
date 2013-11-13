@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Sandors Systems Scribbles</title>
+  <title>puppet vim setup - Sandors Systems Scribbles</title>
   <meta name="author" content="chris">
 
   
-  <meta name="description" content="The Goal Setup vim to edit Puppet Manifests using a few good tools that will get you to pass Puppet Lint tests. ">
+  <meta name="description" content="The Goal Setup vim to edit Puppet Manifests using a few good tools that will get you to pass Puppet Lint tests. Vim-Pathogen Vim-Pathogen on github 1 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://e30chris.github.io">
+  <link rel="canonical" href="http://e30chris.github.io/puppet-vim-setup">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Sandors Systems Scribbles" type="application/atom+xml">
@@ -75,15 +75,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/puppet-vim-setup/">Puppet Vim Setup</a></h1>
+      <h1 class="entry-title">Puppet Vim Setup</h1>
     
     
       <p class="meta">
@@ -106,77 +103,75 @@
   </header>
 
 
-  <div class="entry-content"><h2>The Goal</h2>
+<div class="entry-content"><h2>The Goal</h2>
 
 <p>Setup vim to edit Puppet Manifests using a few good tools that will get you to pass Puppet Lint tests.</p>
 
+<!-- more -->
+
+
+<h2>Vim-Pathogen</h2>
+
+<p>Vim-Pathogen on <a href="https://github.com/tpope/vim-pathogen" title="vim-pathogen">github</a></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[root@Argon ~]# mkdir -p ~/.vim/autoload ~/.vim/bundle
+</span><span class='line'>[root@Argon ~]# cd ~/.vim/autoload
+</span><span class='line'>[root@Argon ~]# curl -o pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Add these settings to .vimrc</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>execute pathogen#infect()
+</span><span class='line'>syntax on
+</span><span class='line'>filetype plugin indent on</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Vim-Puppet</h2>
+
+<p>Vim-Puppet on <a href="https://github.com/rodjek/vim-puppet" title="vim-puppet">github</a></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[root@Argon ~]# cd ~/.vim/bundle
+</span><span class='line'>[root@Argon ~]# git clone git://github.com/rodjek/vim-puppet.git</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Tabular</h2>
+
+<p>Tabular on <a href="https://github.com/godlygeek/tabular" title="tabular">github</a></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[root@Argon ~]# cd ~/.vim/bundle
+</span><span class='line'>[root@Argon ~]# git clone git://github.com/godlygeek/tabular.git</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Syntastic</h2>
+
+<p>Syntastic on <a href="https://github.com/scrooloose/syntastic" title="syntastic">github</a></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[root@Argon ~]# cd ~/.vim/bundle
+</span><span class='line'>[root@Argon ~]# git clone https://github.com/scrooloose/syntastic.git</span></code></pre></td></tr></table></div></figure>
+
 </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/puppet-vim-setup/">Read on &rarr;</a>
-    </footer>
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/auto-update-virtualbox-guest-additions-with-vagrant-vbguest/">Auto Update VirtualBox Guest Additions With Vagrant-vbguest</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
   
 
+<span class="byline author vcard">Posted by <span class="fn">chris</span></span>
 
-<time datetime="2013-11-12T21:01:00-08:00" pubdate data-updated="true">Nov 12<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>The Goal</h2>
-
-<ul>
-<li>Keep the VirtualBox guest additions at the latest version using <a href="https://github.com/dotless-de/vagrant-vbguest">vagrant-vbguest</a> built by <a href="https://github.com/dotless-de">dotless-de</a>.</li>
-</ul>
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/auto-update-virtualbox-guest-additions-with-vagrant-vbguest/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/vanilla-vagrant-setup/">Vanilla Vagrant Setup</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -188,38 +183,42 @@
   
 
 
-<time datetime="2013-11-12T20:57:00-08:00" pubdate data-updated="true">Nov 12<span>th</span>, 2013</time>
-        
-      </p>
+<time datetime="2013-11-12T21:04:00-08:00" pubdate data-updated="true">Nov 12<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/categories/puppet/'>puppet</a>, <a class='category' href='/categories/vim/'>vim</a>
+  
+</span>
+
+
+    </p>
     
-  </header>
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://e30chris.github.io/puppet-vim-setup/" data-via="e30chris" data-counturl="http://e30chris.github.io/puppet-vim-setup/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
 
-
-  <div class="entry-content"><h2>The Goal</h2>
-
-<ul>
-<li>Setup Vagrant</li>
-<li>Start a Vanilla Ubuntu box</li>
-</ul>
-
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/auto-update-virtualbox-guest-additions-with-vagrant-vbguest/" title="Previous Post: Auto Update VirtualBox Guest Additions with vagrant-vbguest">&laquo; Auto Update VirtualBox Guest Additions with vagrant-vbguest</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
 </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/vanilla-vagrant-setup/">Read on &rarr;</a>
-    </footer>
-  
 
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
 <aside class="sidebar">
   
     <section>
@@ -244,7 +243,7 @@
 <section>
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   
   <a href="https://github.com/e30chris">@e30chris</a> on GitHub
@@ -285,6 +284,7 @@
 
   
 </aside>
+
 
     </div>
   </div>

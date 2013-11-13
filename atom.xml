@@ -4,7 +4,7 @@
   <title><![CDATA[Sandors Systems Scribbles]]></title>
   <link href="http://e30chris.github.io/atom.xml" rel="self"/>
   <link href="http://e30chris.github.io/"/>
-  <updated>2013-11-12T21:02:46-08:00</updated>
+  <updated>2013-11-12T21:05:19-08:00</updated>
   <id>http://e30chris.github.io/</id>
   <author>
     <name><![CDATA[chris]]></name>
@@ -12,6 +12,72 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[puppet vim setup]]></title>
+    <link href="http://e30chris.github.io/puppet-vim-setup/"/>
+    <updated>2013-11-12T21:04:00-08:00</updated>
+    <id>http://e30chris.github.io/puppet-vim-setup</id>
+    <content type="html"><![CDATA[<h2>The Goal</h2>
+
+<p>Setup vim to edit Puppet Manifests using a few good tools that will get you to pass Puppet Lint tests.</p>
+
+<!-- more -->
+
+
+<h2>Vim-Pathogen</h2>
+
+<p>Vim-Pathogen on <a href="https://github.com/tpope/vim-pathogen" title="vim-pathogen">github</a></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[root@Argon ~]# mkdir -p ~/.vim/autoload ~/.vim/bundle
+</span><span class='line'>[root@Argon ~]# cd ~/.vim/autoload
+</span><span class='line'>[root@Argon ~]# curl -o pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Add these settings to .vimrc</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>execute pathogen#infect()
+</span><span class='line'>syntax on
+</span><span class='line'>filetype plugin indent on</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Vim-Puppet</h2>
+
+<p>Vim-Puppet on <a href="https://github.com/rodjek/vim-puppet" title="vim-puppet">github</a></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[root@Argon ~]# cd ~/.vim/bundle
+</span><span class='line'>[root@Argon ~]# git clone git://github.com/rodjek/vim-puppet.git</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Tabular</h2>
+
+<p>Tabular on <a href="https://github.com/godlygeek/tabular" title="tabular">github</a></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[root@Argon ~]# cd ~/.vim/bundle
+</span><span class='line'>[root@Argon ~]# git clone git://github.com/godlygeek/tabular.git</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Syntastic</h2>
+
+<p>Syntastic on <a href="https://github.com/scrooloose/syntastic" title="syntastic">github</a></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[root@Argon ~]# cd ~/.vim/bundle
+</span><span class='line'>[root@Argon ~]# git clone https://github.com/scrooloose/syntastic.git</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Auto Update VirtualBox Guest Additions with vagrant-vbguest]]></title>
