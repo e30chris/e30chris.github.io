@@ -4,7 +4,7 @@
   <title><![CDATA[Sandors Systems Scribbles]]></title>
   <link href="http://e30chris.github.io/atom.xml" rel="self"/>
   <link href="http://e30chris.github.io/"/>
-  <updated>2013-11-12T21:05:19-08:00</updated>
+  <updated>2013-11-12T22:24:05-08:00</updated>
   <id>http://e30chris.github.io/</id>
   <author>
     <name><![CDATA[chris]]></name>
@@ -12,6 +12,188 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[post to octopress and deploy to github pages]]></title>
+    <link href="http://e30chris.github.io/post-to-octopress-and-deploy-to-github-pages/"/>
+    <updated>2013-11-12T21:06:00-08:00</updated>
+    <id>http://e30chris.github.io/post-to-octopress-and-deploy-to-github-pages</id>
+    <content type="html"><![CDATA[<h2>The Goal</h2>
+
+<p>Use <a href="https://github.com/mojombo/jekyll">Jekyll</a> (<a href="http://octopress.org/">octopress</a> actually) to post to Sandors Systems Scribbles which is hosted on <a href="http://pages.github.com/">GitHub Pages</a> (where you are <a href="http://sandorsscribbl.es/post-to-octopress-and-deploy-to-github-pages/">now</a>???)</p>
+
+<!-- more -->
+
+
+<h3>Create a new post</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>pineApplez&gt;e30chris.github.io $rake new_post
+</span><span class='line'>Enter a title for your post: post to octopress and deploy to github pages
+</span><span class='line'>mkdir -p source/_posts
+</span><span class='line'>Creating new post: source/_posts/2013-11-12-post-to-octopress-and-deploy-to-github-pages.markdown</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Write the post in markdown, save it.  <a href="http://mouapp.com/">Mou</a> is a nice markdown editor for OS X.</p>
+
+<h3>Generate new blog</h3>
+
+<p>This throws away everything and recreates the static files from scratch.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>pineApplez&gt;e30chris.github.io $rake -v generate
+</span><span class='line'>## Generating Site with Jekyll
+</span><span class='line'>identical source/stylesheets/screen.css
+</span><span class='line'>Configuration from /Users/Sandors/Codestuff/e30chris.github.io/_config.yml
+</span><span class='line'>Building site: source -&gt; public
+</span><span class='line'>Successfully generated site: source -&gt; public</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Deploy new blog</h3>
+
+<p>This does a bunch of stuff to move the new blog content in the &lsquo;source&rsquo; branch to the &lsquo;master&rsquo; branch on GitHub which then updates the GitHub Pages content.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>pineApplez&gt;e30chris.github.io $rake -v deploy
+</span><span class='line'>## Deploying branch to Github Pages
+</span><span class='line'>## Pulling any updates from Github Pages
+</span><span class='line'>cd _deploy
+</span><span class='line'>remote: Counting objects: 7, done.
+</span><span class='line'>remote: Compressing objects: 100% (3/3), done.
+</span><span class='line'>remote: Total 5 (delta 2), reused 5 (delta 2)
+</span><span class='line'>Unpacking objects: 100% (5/5), done.
+</span><span class='line'>From github.com:e30chris/e30chris.github.io
+</span><span class='line'>   d6ed173..281b573  source     -&gt; origin/source
+</span><span class='line'>There is no tracking information for the current branch.
+</span><span class='line'>Please specify which branch you want to merge with.
+</span><span class='line'>See git-pull(1) for details
+</span><span class='line'>
+</span><span class='line'>    git pull &lt;remote&gt; &lt;branch&gt;
+</span><span class='line'>
+</span><span class='line'>If you wish to set tracking information for this branch you can do so with:
+</span><span class='line'>
+</span><span class='line'>    git branch --set-upstream master origin/&lt;branch&gt;
+</span><span class='line'>
+</span><span class='line'>cd -
+</span><span class='line'>rm -rf _deploy/CNAME
+</span><span class='line'>rm -rf _deploy/assets
+</span><span class='line'>rm -rf _deploy/atom.xml
+</span><span class='line'>rm -rf _deploy/blog
+</span><span class='line'>rm -rf _deploy/categories
+</span><span class='line'>rm -rf _deploy/favicon.png
+</span><span class='line'>rm -rf _deploy/images
+</span><span class='line'>rm -rf _deploy/index.html
+</span><span class='line'>rm -rf _deploy/javascripts
+</span><span class='line'>rm -rf _deploy/robots.txt
+</span><span class='line'>rm -rf _deploy/sitemap.xml
+</span><span class='line'>rm -rf _deploy/stylesheets
+</span><span class='line'>rm -rf _deploy/vanilla-vagrant-setup
+</span><span class='line'>
+</span><span class='line'>## Copying public to _deploy
+</span><span class='line'>cp -r public/. _deploy
+</span><span class='line'>cd _deploy
+</span><span class='line'>
+</span><span class='line'>## Commiting: Site updated at 2013-11-13 05:02:52 UTC
+</span><span class='line'>[master 3df53cc] Site updated at 2013-11-13 05:02:52 UTC
+</span><span class='line'> 8 files changed, 484 insertions(+), 8 deletions(-)
+</span><span class='line'> create mode 100644 auto-update-virtualbox-guest-additions-with-vagrant-vbguest/index.html
+</span><span class='line'>
+</span><span class='line'>## Pushing generated _deploy website
+</span><span class='line'>Counting objects: 29, done.
+</span><span class='line'>Delta compression using up to 2 threads.
+</span><span class='line'>Compressing objects: 100% (11/11), done.
+</span><span class='line'>Writing objects: 100% (16/16), 5.66 KiB, done.
+</span><span class='line'>Total 16 (delta 8), reused 0 (delta 0)
+</span><span class='line'>To git@github.com:e30chris/e30chris.github.io.git
+</span><span class='line'>   02467a6..3df53cc  master -&gt; master
+</span><span class='line'>
+</span><span class='line'>## Github Pages deploy complete
+</span><span class='line'>cd -</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Commit the new post</h3>
+
+<p>Now that the code is up on GitHub save it in the git repo.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>pineApplez&gt;e30chris.github.io $git add .
+</span><span class='line'>pineApplez&gt;e30chris.github.io $git commit -m 'post - post to octopress and deploy to github pages'
+</span><span class='line'>[source e200e58] post - post to octopress and deploy to github pages
+</span><span class='line'> 1 file changed, 52 insertions(+)
+</span><span class='line'> create mode 100644 source/_posts/2013-11-12-post-to-octopress-and-deploy-to-github-pages.markdown
+</span><span class='line'>pineApplez&gt;e30chris.github.io $git push origin source</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now write more scribbles and make the nerd world even more lazyier.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[puppet vim setup]]></title>

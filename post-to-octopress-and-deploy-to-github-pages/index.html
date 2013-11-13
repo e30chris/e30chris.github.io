@@ -1,0 +1,451 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>post to octopress and deploy to github pages - Sandors Systems Scribbles</title>
+  <meta name="author" content="chris">
+
+  
+  <meta name="description" content="The Goal Use Jekyll (octopress actually) to post to Sandors Systems Scribbles which is hosted on GitHub Pages (where you are now???) Create a new &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://e30chris.github.io/post-to-octopress-and-deploy-to-github-pages">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Sandors Systems Scribbles" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-38590178-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Sandors Systems Scribbles</a></h1>
+  
+    <h2>sandor scribbles notes about systems</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://duckduckgo.com" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:e30chris.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Post to Octopress and Deploy to Github Pages</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-11-12T21:06:00-08:00" pubdate data-updated="true">Nov 12<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>The Goal</h2>
+
+<p>Use <a href="https://github.com/mojombo/jekyll">Jekyll</a> (<a href="http://octopress.org/">octopress</a> actually) to post to Sandors Systems Scribbles which is hosted on <a href="http://pages.github.com/">GitHub Pages</a> (where you are <a href="http://sandorsscribbl.es/post-to-octopress-and-deploy-to-github-pages/">now</a>???)</p>
+
+<!-- more -->
+
+
+<h3>Create a new post</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>pineApplez&gt;e30chris.github.io $rake new_post
+</span><span class='line'>Enter a title for your post: post to octopress and deploy to github pages
+</span><span class='line'>mkdir -p source/_posts
+</span><span class='line'>Creating new post: source/_posts/2013-11-12-post-to-octopress-and-deploy-to-github-pages.markdown</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Write the post in markdown, save it.  <a href="http://mouapp.com/">Mou</a> is a nice markdown editor for OS X.</p>
+
+<h3>Generate new blog</h3>
+
+<p>This throws away everything and recreates the static files from scratch.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>pineApplez&gt;e30chris.github.io $rake -v generate
+</span><span class='line'>## Generating Site with Jekyll
+</span><span class='line'>identical source/stylesheets/screen.css
+</span><span class='line'>Configuration from /Users/Sandors/Codestuff/e30chris.github.io/_config.yml
+</span><span class='line'>Building site: source -&gt; public
+</span><span class='line'>Successfully generated site: source -&gt; public</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Deploy new blog</h3>
+
+<p>This does a bunch of stuff to move the new blog content in the &lsquo;source&rsquo; branch to the &lsquo;master&rsquo; branch on GitHub which then updates the GitHub Pages content.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>pineApplez&gt;e30chris.github.io $rake -v deploy
+</span><span class='line'>## Deploying branch to Github Pages
+</span><span class='line'>## Pulling any updates from Github Pages
+</span><span class='line'>cd _deploy
+</span><span class='line'>remote: Counting objects: 7, done.
+</span><span class='line'>remote: Compressing objects: 100% (3/3), done.
+</span><span class='line'>remote: Total 5 (delta 2), reused 5 (delta 2)
+</span><span class='line'>Unpacking objects: 100% (5/5), done.
+</span><span class='line'>From github.com:e30chris/e30chris.github.io
+</span><span class='line'>   d6ed173..281b573  source     -&gt; origin/source
+</span><span class='line'>There is no tracking information for the current branch.
+</span><span class='line'>Please specify which branch you want to merge with.
+</span><span class='line'>See git-pull(1) for details
+</span><span class='line'>
+</span><span class='line'>    git pull &lt;remote&gt; &lt;branch&gt;
+</span><span class='line'>
+</span><span class='line'>If you wish to set tracking information for this branch you can do so with:
+</span><span class='line'>
+</span><span class='line'>    git branch --set-upstream master origin/&lt;branch&gt;
+</span><span class='line'>
+</span><span class='line'>cd -
+</span><span class='line'>rm -rf _deploy/CNAME
+</span><span class='line'>rm -rf _deploy/assets
+</span><span class='line'>rm -rf _deploy/atom.xml
+</span><span class='line'>rm -rf _deploy/blog
+</span><span class='line'>rm -rf _deploy/categories
+</span><span class='line'>rm -rf _deploy/favicon.png
+</span><span class='line'>rm -rf _deploy/images
+</span><span class='line'>rm -rf _deploy/index.html
+</span><span class='line'>rm -rf _deploy/javascripts
+</span><span class='line'>rm -rf _deploy/robots.txt
+</span><span class='line'>rm -rf _deploy/sitemap.xml
+</span><span class='line'>rm -rf _deploy/stylesheets
+</span><span class='line'>rm -rf _deploy/vanilla-vagrant-setup
+</span><span class='line'>
+</span><span class='line'>## Copying public to _deploy
+</span><span class='line'>cp -r public/. _deploy
+</span><span class='line'>cd _deploy
+</span><span class='line'>
+</span><span class='line'>## Commiting: Site updated at 2013-11-13 05:02:52 UTC
+</span><span class='line'>[master 3df53cc] Site updated at 2013-11-13 05:02:52 UTC
+</span><span class='line'> 8 files changed, 484 insertions(+), 8 deletions(-)
+</span><span class='line'> create mode 100644 auto-update-virtualbox-guest-additions-with-vagrant-vbguest/index.html
+</span><span class='line'>
+</span><span class='line'>## Pushing generated _deploy website
+</span><span class='line'>Counting objects: 29, done.
+</span><span class='line'>Delta compression using up to 2 threads.
+</span><span class='line'>Compressing objects: 100% (11/11), done.
+</span><span class='line'>Writing objects: 100% (16/16), 5.66 KiB, done.
+</span><span class='line'>Total 16 (delta 8), reused 0 (delta 0)
+</span><span class='line'>To git@github.com:e30chris/e30chris.github.io.git
+</span><span class='line'>   02467a6..3df53cc  master -&gt; master
+</span><span class='line'>
+</span><span class='line'>## Github Pages deploy complete
+</span><span class='line'>cd -</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Commit the new post</h3>
+
+<p>Now that the code is up on GitHub save it in the git repo.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>pineApplez&gt;e30chris.github.io $git add .
+</span><span class='line'>pineApplez&gt;e30chris.github.io $git commit -m 'post - post to octopress and deploy to github pages'
+</span><span class='line'>[source e200e58] post - post to octopress and deploy to github pages
+</span><span class='line'> 1 file changed, 52 insertions(+)
+</span><span class='line'> create mode 100644 source/_posts/2013-11-12-post-to-octopress-and-deploy-to-github-pages.markdown
+</span><span class='line'>pineApplez&gt;e30chris.github.io $git push origin source</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now write more scribbles and make the nerd world even more lazyier.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">chris</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-11-12T21:06:00-08:00" pubdate data-updated="true">Nov 12<span>th</span>, 2013</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://e30chris.github.io/post-to-octopress-and-deploy-to-github-pages/" data-via="e30chris" data-counturl="http://e30chris.github.io/post-to-octopress-and-deploy-to-github-pages/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/puppet-vim-setup/" title="Previous Post: puppet vim setup">&laquo; puppet vim setup</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/post-to-octopress-and-deploy-to-github-pages/">Post to Octopress and Deploy to Github Pages</a>
+      </li>
+    
+      <li class="post">
+        <a href="/puppet-vim-setup/">Puppet Vim Setup</a>
+      </li>
+    
+      <li class="post">
+        <a href="/auto-update-virtualbox-guest-additions-with-vagrant-vbguest/">Auto Update VirtualBox Guest Additions With Vagrant-vbguest</a>
+      </li>
+    
+      <li class="post">
+        <a href="/vanilla-vagrant-setup/">Vanilla Vagrant Setup</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/e30chris">@e30chris</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'e30chris',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/110597447557846626515?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - chris -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
