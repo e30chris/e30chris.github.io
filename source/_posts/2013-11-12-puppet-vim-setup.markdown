@@ -2,7 +2,7 @@
 layout: post
 title: "puppet vim setup"
 date: 2013-11-12 21:04
-comments: true
+comments: false
 categories: [puppet,vim]
 ---
 
@@ -10,6 +10,17 @@ categories: [puppet,vim]
 Setup vim to edit Puppet Manifests using a few good tools that will get you to pass Puppet Lint tests.
 
 <!-- more -->
+
+## The Links
+
+- PuppetLabs - [link](http://puppetlabs.com/)
+
+- vim-puppet - [link](https://github.com/rodjek/vim-puppet)
+
+- vim tabular - [link](https://github.com/godlygeek/tabular)
+
+- vim syntastic - [link](https://github.com/scrooloose/syntastic)
+
 
 ## Vim-Pathogen
 Vim-Pathogen on [github](https://github.com/tpope/vim-pathogen "vim-pathogen")

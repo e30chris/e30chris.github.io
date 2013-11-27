@@ -2,16 +2,25 @@
 layout: post
 title: "post to octopress and deploy to github pages"
 date: 2013-11-12 21:06
-comments: true
+comments: false
 categories: 
 ---
 
 ## The Goal
-Use [Jekyll](https://github.com/mojombo/jekyll) ([octopress](http://octopress.org/) actually) to post to Sandors Systems Scribbles which is hosted on [GitHub Pages](http://pages.github.com/) (where you are [now](http://sandorsscribbl.es/post-to-octopress-and-deploy-to-github-pages/)???)
+Use Jekyll & octopress to post to Sandors Systems Scribbles which is hosted on GitHub Pages (where you are [now](http://sandorsscribbl.es/post-to-octopress-and-deploy-to-github-pages/)
 
 <!-- more -->
 
-### Create a new post
+## The Links
+
+- Jekyll - [link](http://jekyllrb.com/)
+
+- OctoPress - [link](http://octopress.org)
+
+- GitHub Pages - [link](http://pages.github.com)
+
+
+## Create a new post
 
 ```
 pineApplez>e30chris.github.io $rake new_post
@@ -21,7 +30,7 @@ Creating new post: source/_posts/2013-11-12-post-to-octopress-and-deploy-to-gith
 ```
 Write the post in markdown, save it.  [Mou](http://mouapp.com/) is a nice markdown editor for OS X.
 
-### Generate new blog
+## Generate new blog
 This throws away everything and recreates the static files from scratch.
 
 ```
@@ -33,7 +42,7 @@ Building site: source -> public
 Successfully generated site: source -> public
 ```
 
-### Deploy new blog
+## Deploy new blog
 This does a bunch of stuff to move the new blog content in the 'source' branch to the 'master' branch on GitHub which then updates the GitHub Pages content.
 
 ```

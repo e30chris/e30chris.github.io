@@ -2,7 +2,7 @@
 layout: post
 title: "vanilla vagrant setup"
 date: 2013-11-12 20:57
-comments: true
+comments: false
 categories: [vagrant]
 ---
 
@@ -13,6 +13,10 @@ categories: [vagrant]
 
 
 <!-- more -->
+
+## The Links
+
+- Vagrant - [link](http://www.vagrantup.com/)
 
 ## Vagrant Setup
 

@@ -2,15 +2,24 @@
 layout: post
 title: "Auto Update VirtualBox Guest Additions with vagrant-vbguest"
 date: 2013-11-12 21:01
-comments: true
+comments: false
 categories: [vagrant]
 ---
 
 ## The Goal
 
-- Keep the VirtualBox guest additions at the latest version using [vagrant-vbguest](https://github.com/dotless-de/vagrant-vbguest) built by [dotless-de](https://github.com/dotless-de).
+- Keep the VirtualBox guest additions at the latest version using vagrant-vbguest built by dotless-de.
 
 <!-- more -->
+
+## The Links
+
+- Vagrant - [link](http://www.vagrantup.com/)
+
+- Vagrant vbguest - [link](https://github.com/dotless-de/vagrant-vbguest)
+
+- dotless-de - [link](https://github.com/dotless-de)
+
 
 ## vagrant-vbguest
 
