@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: webstuff | Sandors Systems Scribbles]]></title>
+  <link href="http://e30chris.github.io/categories/webstuff/atom.xml" rel="self"/>
+  <link href="http://e30chris.github.io/"/>
+  <updated>2013-11-26T17:15:44-08:00</updated>
+  <id>http://e30chris.github.io/</id>
+  <author>
+    <name><![CDATA[chris]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Add Twitter Bootstrap 3 to OctoPress with OctoStrap3]]></title>
+    <link href="http://e30chris.github.io/add-twitter-bootstrap-3-to-octopress-with-octostrap3/"/>
+    <updated>2013-11-26T16:41:00-08:00</updated>
+    <id>http://e30chris.github.io/add-twitter-bootstrap-3-to-octopress-with-octostrap3</id>
+    <content type="html"><![CDATA[<h2>The Goal</h2>
+
+<ul>
+<li>Use awesome Twitter Bootstrap 3 on Octopress</li>
+<li>Setup OctoStrap3 to do that</li>
+</ul>
+
+
+<!-- more -->
+
+
+<h2>The Links</h2>
+
+<p>OctoPress &ndash; <a href="http://octopress.org">link</a></p>
+
+<p>OctoStrap3 &ndash; <a href="http://kaworu.github.io/octopress/">link</a></p>
+
+<h2>Octopress Setup</h2>
+
+<p>Go <a href="http://octopress.org/docs/setup/">here</a> and do all of that</p>
+
+<h2>OctoStrap3 Setup</h2>
+
+<p>Instructions <a href="http://kaworu.github.io/octopress/setup/install/">here</a></p>
+
+<p>From the base OctoPress dir</p>
+
+<p>```
+spudBud@pineApplez> git clone <a href="https://github.com/kAworu/octostrap3">https://github.com/kAworu/octostrap3</a> .themes/octostrap3
+spudBud@pineApplez> rake &ldquo;install[octostrap3]&rdquo;</p>
+
+<p>```</p>
+
+<h2>Category List Aside</h2>
+
+<p>Add a category list html page to <code>source/_includes/custom/asides</code></p>
+
+<p><div><script src='https://gist.github.com/7669102.js'></script>
+<noscript><pre><code>&lt;section class=&quot;panel panel-default&quot;&gt;
+  &lt;div class=&quot;panel-heading&quot;&gt;
+    &lt;h3 class=&quot;panel-title&quot;&gt;Categories&lt;/h3&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;list-group&quot;&gt;
+    {% for category in site.categories %}
+    {% capture category_url %}{{ site.category_dir }}/{{ category | first | slugize | downcase | replace:&#39; &#39;,&#39;-&#39; | append:&#39;/index.html&#39;}}{% endcapture %}
+    &lt;a class=&quot;list-group-item {% if category_url == page.url %}active{% endif %}&quot; href=&quot;{{ root_url | append:&#39;/&#39; | append:category_url }}&quot;&gt;
+        &lt;span class=&quot;badge&quot;&gt;{{ category | last | size }}&lt;/span&gt;
+        {{ category | first }}
+      &lt;/a&gt;
+    {% endfor %}
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre></noscript></div>
+</p>
+
+<p>Add the new aside in the _config.yml</p>
+
+<p>```</p>
+
+<h1>list each of the sidebar modules you want to include, in the order you want them to appear.</h1>
+
+<h1>To add custom asides, create files in /source/_includes/custom/asides/ and add them to the list like &lsquo;custom/asides/custom_aside_name.html&rsquo;</h1>
+
+<p>default_asides: [asides/recent_posts.html, asides/category_list.html, asides/twitter.html, asides/github.html, asides/googleplus.html]
+```</p>
+
+<h2>rake generate | deploy</h2>
+
+<p><code>
+spudBud@pineApplez&gt; rake generate
+spudBud@pineApplez&gt; rake deploy
+</code></p>
+
+<p>You should now have a Twitter Bootstrapped UI on your OctoPress blog.  You should also have an aside that list each category, the number of posts for each and have a highlight if you are on that categories page.</p>
+]]></content>
+  </entry>
+  
+</feed>
