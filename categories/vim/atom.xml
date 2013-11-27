@@ -4,7 +4,7 @@
   <title><![CDATA[Category: vim | Sandors Systems Scribbles]]></title>
   <link href="http://e30chris.github.io/categories/vim/atom.xml" rel="self"/>
   <link href="http://e30chris.github.io/"/>
-  <updated>2013-11-26T17:33:33-08:00</updated>
+  <updated>2013-11-27T14:29:21-08:00</updated>
   <id>http://e30chris.github.io/</id>
   <author>
     <name><![CDATA[chris]]></name>
@@ -23,6 +23,16 @@
 <p>Setup vim to edit Puppet Manifests using a few good tools that will get you to pass Puppet Lint tests.</p>
 
 <!-- more -->
+
+
+<h2>The Links</h2>
+
+<ul>
+<li><p>PuppetLabs &ndash; <a href="http://puppetlabs.com/">link</a></p></li>
+<li><p>vim-puppet &ndash; <a href="https://github.com/rodjek/vim-puppet">link</a></p></li>
+<li><p>vim tabular &ndash; <a href="https://github.com/godlygeek/tabular">link</a></p></li>
+<li><p>vim syntastic &ndash; <a href="https://github.com/scrooloose/syntastic">link</a></p></li>
+</ul>
 
 
 <h2>Vim-Pathogen</h2>

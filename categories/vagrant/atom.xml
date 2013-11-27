@@ -4,7 +4,7 @@
   <title><![CDATA[Category: vagrant | Sandors Systems Scribbles]]></title>
   <link href="http://e30chris.github.io/categories/vagrant/atom.xml" rel="self"/>
   <link href="http://e30chris.github.io/"/>
-  <updated>2013-11-26T17:33:33-08:00</updated>
+  <updated>2013-11-27T14:29:21-08:00</updated>
   <id>http://e30chris.github.io/</id>
   <author>
     <name><![CDATA[chris]]></name>
@@ -21,11 +21,20 @@
     <content type="html"><![CDATA[<h2>The Goal</h2>
 
 <ul>
-<li>Keep the VirtualBox guest additions at the latest version using <a href="https://github.com/dotless-de/vagrant-vbguest">vagrant-vbguest</a> built by <a href="https://github.com/dotless-de">dotless-de</a>.</li>
+<li>Keep the VirtualBox guest additions at the latest version using vagrant-vbguest built by dotless-de.</li>
 </ul>
 
 
 <!-- more -->
+
+
+<h2>The Links</h2>
+
+<ul>
+<li><p>Vagrant &ndash; <a href="http://www.vagrantup.com/">link</a></p></li>
+<li><p>Vagrant vbguest &ndash; <a href="https://github.com/dotless-de/vagrant-vbguest">link</a></p></li>
+<li><p>dotless-de &ndash; <a href="https://github.com/dotless-de">link</a></p></li>
+</ul>
 
 
 <h2>vagrant-vbguest</h2>
@@ -64,6 +73,13 @@ spudBud@pineApplez&gt; vagrant vbguest --status
 
 
 <!-- more -->
+
+
+<h2>The Links</h2>
+
+<ul>
+<li>Vagrant &ndash; <a href="http://www.vagrantup.com/">link</a></li>
+</ul>
 
 
 <h2>Vagrant Setup</h2>
