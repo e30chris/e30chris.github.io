@@ -4,7 +4,7 @@
   <title><![CDATA[Sandors Systems Scribbles]]></title>
   <link href="http://e30chris.github.io/atom.xml" rel="self"/>
   <link href="http://e30chris.github.io/"/>
-  <updated>2013-11-26T17:15:44-08:00</updated>
+  <updated>2013-11-26T17:33:33-08:00</updated>
   <id>http://e30chris.github.io/</id>
   <author>
     <name><![CDATA[chris]]></name>
@@ -12,6 +12,81 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Add Twitter Timeline to OctoPress Sidebar]]></title>
+    <link href="http://e30chris.github.io/add-twitter-timeline-to-octopress-sidebar/"/>
+    <updated>2013-11-26T17:20:00-08:00</updated>
+    <id>http://e30chris.github.io/add-twitter-timeline-to-octopress-sidebar</id>
+    <content type="html"><![CDATA[<h2>The Goal</h2>
+
+<ul>
+<li>Add a Twitter timeline to the sidebar of an Octopress blog</li>
+</ul>
+
+
+<!-- more -->
+
+
+<h2>The links</h2>
+
+<p>Octopress &ndash; <a href="http://octopress.org/">link</a></p>
+
+<p>Acqui-hire.me &ndash; <a href="http://acqui-hire.me/blog/2012/11/07/octopress-and-twitter-timelines/">link</a></p>
+
+<h2>Create a Twitter widget</h2>
+
+<p>Goto the Twitter widget settings page <a href="https://twitter.com/settings/widgets">here</a> and create your timeline.</p>
+
+<h2>Twitter Aside</h2>
+
+<p>Add a twitter html page to <code>source/_include/custom/asides</code></p>
+
+<div><script src='https://gist.github.com/7669257.js'></script>
+<noscript><pre><code>{% if site.twitter_user and site.twitter_widget_id %}
+&lt;section&gt;
+  &lt;h1&gt;Latest Tweets&lt;/h1&gt;
+  &lt;p&gt;&lt;a class=&quot;twitter-timeline&quot; href=&quot;https://twitter.com/{{site.twitter_user}}&quot; data-widget-id=&quot;{{site.twitter_widget_id}}&quot;&gt;Tweets by @{{ site.twitter_user }}&lt;/a&gt;&lt;/p&gt;
+  &lt;script&gt;!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=&quot;//platform.twitter.com/widgets.js&quot;;fjs.parentNode.insertBefore(js,fjs);}}(document,&quot;script&quot;,&quot;twitter-wjs&quot;);&lt;/script&gt;
+&lt;/section&gt;
+{% endif %}</code></pre></noscript></div>
+
+
+<p>Add that aside in your _config.yml</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># list each of the sidebar modules you want to include, in the order you want them to appear.
+</span><span class='line'># To add custom asides, create files in /source/_includes/custom/asides/ and add them to the list like 'custom/asides/custom_aside_name.html'
+</span><span class='line'>default_asides: [asides/recent_posts.html, asides/category_list.html, asides/twitter.html, asides/github.html, asides/googleplus.html]</span></code></pre></td></tr></table></div></figure>
+
+
+<p>and update the Twitter settings</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># Twitter Embed Timeline
+</span><span class='line'>twitter_user: tweety_username
+</span><span class='line'>twitter_widget_id: widget_id_from_twitter_widget_code_blob
+</span><span class='line'>twitter_tweet_button: true</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>rake generate | deploy</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>spudBud@pineApplez&gt; rake generate
+</span><span class='line'>spudBud@pineApplez&gt; rake deploy</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>The results</h2>
+
+<p>You should now have your Twitter timeline embedded on the sidebar of your OctoPress blog.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Add Twitter Bootstrap 3 to OctoPress with OctoStrap3]]></title>

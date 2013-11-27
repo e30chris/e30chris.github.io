@@ -4,7 +4,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Add Twitter Bootstrap 3 to OctoPress with OctoStrap3 - Sandors Systems Scribbles</title>
+  <title>Add Twitter Timeline to OctoPress Sidebar - Sandors Systems Scribbles</title>
   <meta name="author" content="chris">
 
   
@@ -16,7 +16,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://e30chris.github.io/add-twitter-bootstrap-3-to-octopress-with-octostrap3">
+  <link rel="canonical" href="http://e30chris.github.io/add-twitter-timeline-to-octopress-sidebar">
   <link href="/favicon.png" type="image/png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="Sandors Systems Scribbles" type="application/atom+xml">
 
@@ -110,13 +110,13 @@
 
 
 
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-11-26T16:41:00-08:00" pubdate data-updated="true">Nov 26<span>th</span>, 2013</time>
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-11-26T17:20:00-08:00" pubdate data-updated="true">Nov 26<span>th</span>, 2013</time>
         
       </p>
     
     
     <h1 class="entry-title">
-        Add Twitter Bootstrap 3 to OctoPress With OctoStrap3
+        Add Twitter Timeline to OctoPress Sidebar
         
     </h1>
     
@@ -126,59 +126,38 @@
 <div class="entry-content clearfix"><h2>The Goal</h2>
 
 <ul>
-<li>Use awesome Twitter Bootstrap 3 on Octopress</li>
-<li>Setup OctoStrap3 to do that</li>
+<li>Add a Twitter timeline to the sidebar of an Octopress blog</li>
 </ul>
 
 
 <!-- more -->
 
 
-<h2>The Links</h2>
+<h2>The links</h2>
 
-<p>OctoPress &ndash; <a href="http://octopress.org">link</a></p>
+<p>Octopress &ndash; <a href="http://octopress.org/">link</a></p>
 
-<p>OctoStrap3 &ndash; <a href="http://kaworu.github.io/octopress/">link</a></p>
+<p>Acqui-hire.me &ndash; <a href="http://acqui-hire.me/blog/2012/11/07/octopress-and-twitter-timelines/">link</a></p>
 
-<h2>Octopress Setup</h2>
+<h2>Create a Twitter widget</h2>
 
-<p>Go <a href="http://octopress.org/docs/setup/">here</a> and do all of that</p>
+<p>Goto the Twitter widget settings page <a href="https://twitter.com/settings/widgets">here</a> and create your timeline.</p>
 
-<h2>OctoStrap3 Setup</h2>
+<h2>Twitter Aside</h2>
 
-<p>Instructions <a href="http://kaworu.github.io/octopress/setup/install/">here</a></p>
+<p>Add a twitter html page to <code>source/_include/custom/asides</code></p>
 
-<p>From the base OctoPress dir</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>spudBud@pineApplez&gt; git clone https://github.com/kAworu/octostrap3 .themes/octostrap3
-</span><span class='line'>spudBud@pineApplez&gt; rake "install[octostrap3]"
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Category List Aside</h2>
-
-<p>Add a category list html page to <code>source/_includes/custom/asides</code></p>
-
-<div><script src='https://gist.github.com/7669102.js'></script>
-<noscript><pre><code>&lt;section class=&quot;panel panel-default&quot;&gt;
-  &lt;div class=&quot;panel-heading&quot;&gt;
-    &lt;h3 class=&quot;panel-title&quot;&gt;Categories&lt;/h3&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;list-group&quot;&gt;
-    {% for category in site.categories %}
-    {% capture category_url %}{{ site.category_dir }}/{{ category | first | slugize | downcase | replace:&#39; &#39;,&#39;-&#39; | append:&#39;/index.html&#39;}}{% endcapture %}
-    &lt;a class=&quot;list-group-item {% if category_url == page.url %}active{% endif %}&quot; href=&quot;{{ root_url | append:&#39;/&#39; | append:category_url }}&quot;&gt;
-        &lt;span class=&quot;badge&quot;&gt;{{ category | last | size }}&lt;/span&gt;
-        {{ category | first }}
-      &lt;/a&gt;
-    {% endfor %}
-  &lt;/div&gt;
-&lt;/section&gt;</code></pre></noscript></div>
+<div><script src='https://gist.github.com/7669257.js'></script>
+<noscript><pre><code>{% if site.twitter_user and site.twitter_widget_id %}
+&lt;section&gt;
+  &lt;h1&gt;Latest Tweets&lt;/h1&gt;
+  &lt;p&gt;&lt;a class=&quot;twitter-timeline&quot; href=&quot;https://twitter.com/{{site.twitter_user}}&quot; data-widget-id=&quot;{{site.twitter_widget_id}}&quot;&gt;Tweets by @{{ site.twitter_user }}&lt;/a&gt;&lt;/p&gt;
+  &lt;script&gt;!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=&quot;//platform.twitter.com/widgets.js&quot;;fjs.parentNode.insertBefore(js,fjs);}}(document,&quot;script&quot;,&quot;twitter-wjs&quot;);&lt;/script&gt;
+&lt;/section&gt;
+{% endif %}</code></pre></noscript></div>
 
 
-<p>Add the new aside in the _config.yml</p>
+<p>Add that aside in your _config.yml</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -186,6 +165,18 @@
 </pre></td><td class='code'><pre><code class=''><span class='line'># list each of the sidebar modules you want to include, in the order you want them to appear.
 </span><span class='line'># To add custom asides, create files in /source/_includes/custom/asides/ and add them to the list like 'custom/asides/custom_aside_name.html'
 </span><span class='line'>default_asides: [asides/recent_posts.html, asides/category_list.html, asides/twitter.html, asides/github.html, asides/googleplus.html]</span></code></pre></td></tr></table></div></figure>
+
+
+<p>and update the Twitter settings</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># Twitter Embed Timeline
+</span><span class='line'>twitter_user: tweety_username
+</span><span class='line'>twitter_widget_id: widget_id_from_twitter_widget_code_blob
+</span><span class='line'>twitter_tweet_button: true</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>rake generate | deploy</h2>
@@ -196,7 +187,9 @@
 </span><span class='line'>spudBud@pineApplez&gt; rake deploy</span></code></pre></td></tr></table></div></figure>
 
 
-<p>You should now have a Twitter Bootstrapped UI on your OctoPress blog.  You should also have an aside that list each category, the number of posts for each and have a highlight if you are on that categories page.</p>
+<h2>The results</h2>
+
+<p>You should now have your Twitter timeline embedded on the sidebar of your OctoPress blog.</p>
 </div>
 
 
@@ -220,7 +213,7 @@
 
 
 
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-11-26T16:41:00-08:00" pubdate data-updated="true">Nov 26<span>th</span>, 2013</time>
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-11-26T17:20:00-08:00" pubdate data-updated="true">Nov 26<span>th</span>, 2013</time>
           
 
 <span class="glyphicon glyphicon-tags"></span>&nbsp;
@@ -235,7 +228,7 @@
         
           <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://e30chris.github.io/add-twitter-bootstrap-3-to-octopress-with-octostrap3/" data-via="e30chris" data-counturl="http://e30chris.github.io/add-twitter-bootstrap-3-to-octopress-with-octostrap3/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://e30chris.github.io/add-twitter-timeline-to-octopress-sidebar/" data-via="e30chris" data-counturl="http://e30chris.github.io/add-twitter-timeline-to-octopress-sidebar/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -249,10 +242,8 @@
         
           <ul class="meta text-muted pager">
             
-            <li class="previous"><a href="/post-to-octopress-and-deploy-to-github-pages/" title="Previous Post: post to octopress and deploy to github pages">&laquo; post to octopress and deploy to github pages</a></li>
+            <li class="previous"><a href="/add-twitter-bootstrap-3-to-octopress-with-octostrap3/" title="Previous Post: Add Twitter Bootstrap 3 to OctoPress with OctoStrap3">&laquo; Add Twitter Bootstrap 3 to OctoPress with OctoStrap3</a></li>
             
-            
-            <li class="next"><a href="/add-twitter-timeline-to-octopress-sidebar/" title="Next Post: Add Twitter Timeline to OctoPress Sidebar">Add Twitter Timeline to OctoPress Sidebar &raquo;</a></li>
             
           </ul>
         
@@ -271,9 +262,9 @@
   
   <div id="recent_posts" class="list-group">
     
-    <a class="list-group-item " href="/add-twitter-timeline-to-octopress-sidebar/">Add Twitter Timeline to OctoPress Sidebar</a>
+    <a class="list-group-item active" href="/add-twitter-timeline-to-octopress-sidebar/">Add Twitter Timeline to OctoPress Sidebar</a>
     
-    <a class="list-group-item active" href="/add-twitter-bootstrap-3-to-octopress-with-octostrap3/">Add Twitter Bootstrap 3 to OctoPress With OctoStrap3</a>
+    <a class="list-group-item " href="/add-twitter-bootstrap-3-to-octopress-with-octostrap3/">Add Twitter Bootstrap 3 to OctoPress With OctoStrap3</a>
     
     <a class="list-group-item " href="/post-to-octopress-and-deploy-to-github-pages/">Post to Octopress and Deploy to Github Pages</a>
     
