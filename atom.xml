@@ -4,7 +4,7 @@
   <title><![CDATA[Sandors Systems Scribbles]]></title>
   <link href="http://e30chris.github.io/atom.xml" rel="self"/>
   <link href="http://e30chris.github.io/"/>
-  <updated>2013-11-27T14:29:21-08:00</updated>
+  <updated>2013-11-29T15:24:48-08:00</updated>
   <id>http://e30chris.github.io/</id>
   <author>
     <name><![CDATA[chris]]></name>
@@ -12,6 +12,36 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Add WebProxy Cert to Fedora]]></title>
+    <link href="http://e30chris.github.io/add-webproxy-cert-to-fedora/"/>
+    <updated>2013-11-29T15:19:00-08:00</updated>
+    <id>http://e30chris.github.io/add-webproxy-cert-to-fedora</id>
+    <content type="html"><![CDATA[<h2>The Goal</h2>
+
+<ul>
+<li>Make Fedora work behind a restrictive idiotic corporate web proxy</li>
+<li>Install a corporate cert to make that happen</li>
+</ul>
+
+
+<!-- more -->
+
+
+<h2>Get the cert</h2>
+
+<h2>Install the cert</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>spudBud@pineApplez&gt; openssl x509 -text -in /path/to/proxycert.crt &gt;&gt; /etc/pki/tls/certs/ca-bundle.crt</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>The result</h2>
+
+<p>Your corporate overlord has now man in the middled your personal gmail, have fun.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Add Twitter Timeline to OctoPress Sidebar]]></title>
