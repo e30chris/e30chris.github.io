@@ -135,6 +135,14 @@
 
 <h2>Launch the OpenVPN Access Server AMI</h2>
 
+<ul>
+<li>Set AMI to VPC network</li>
+<li>Auto Assign Public Static IP</li>
+</ul>
+
+
+<h3>AMI ids</h3>
+
 <table>
 <thead>
 <tr>
@@ -147,53 +155,48 @@
 <tr>
 <td></td>
 <td>US East (Virginia)</td>
-<td align="center"> ami-ff6b3096|</td>
+<td align="center"> ami-ff6b3096</td>
 </tr>
 <tr>
 <td></td>
 <td>US West (Oregon)</td>
-<td align="center"> ami-c8039bf8|</td>
+<td align="center"> ami-c8039bf8</td>
 </tr>
 <tr>
 <td></td>
 <td>US West (N California)</td>
-<td align="center"> ami-6c0b3d29|</td>
+<td align="center"> ami-6c0b3d29</td>
 </tr>
 <tr>
 <td></td>
 <td>EU West (Ireland)</td>
-<td align="center"> ami-89d83afe|</td>
+<td align="center"> ami-89d83afe</td>
 </tr>
 <tr>
 <td></td>
 <td>Asia Pacific (Singapore)</td>
-<td align="center"> ami-3c9bce6e|</td>
+<td align="center"> ami-3c9bce6e</td>
 </tr>
 <tr>
 <td></td>
 <td>Asia Pacific (Tokyo)</td>
-<td align="center"> ami-172d4916|</td>
+<td align="center"> ami-172d4916</td>
 </tr>
 <tr>
 <td></td>
 <td>Asia Pacific (Sydney)</td>
-<td align="center"> ami-db73efe1|</td>
+<td align="center"> ami-db73efe1</td>
 </tr>
 <tr>
 <td></td>
 <td>South America (Sao Paulo)</td>
-<td align="center"> ami-6d4ee870 |</td>
+<td align="center"> ami-6d4ee870 </td>
 </tr>
 </tbody>
 </table>
 
 
-<ul>
-<li>Set AMI to VPC network</li>
-<li>Auto Assign Public Static IP</li>
-<li>Set user-data</li>
-</ul>
-
+<h3>Set user-data</h3>
 
 <table>
 <thead>
@@ -206,37 +209,34 @@
 <tbody>
 <tr>
 <td></td>
-<td align="center">public_hostname</td>
-<td align="center">hostname that clients should use to contact the server.|</td>
+<td align="center">public_hostname    </td>
+<td align="center">hostname that clients should use to contact the server</td>
 </tr>
 <tr>
 <td></td>
-<td align="center">admin_user (default=openvpn)</td>
-<td align="center">Access Server administrative account name.|</td>
+<td align="center">admin_user (default=openvpn)    </td>
+<td align="center">Access Server administrative account name</td>
 </tr>
 <tr>
 <td></td>
-<td align="center">license </td>
-<td align="center">Access Server license key <em>without a license key, the Access Server will support up to 2 concurrent connections</em>|</td>
+<td align="center">license     </td>
+<td align="center">Access Server license key <em>without a license key only 2 connections allowed</em></td>
 </tr>
 <tr>
 <td></td>
-<td align="center">reroute_gw (boolean, default=0) </td>
-<td align="center">if 1, clients will route internet traffic through the VPN.</td>
+<td align="center">reroute_gw default=0 </td>
+<td align="center">if 1, clients will route internet traffic through the VPN</td>
 </tr>
 <tr>
 <td></td>
-<td align="center">reroute_dns (boolean, default=0) </td>
-<td align="center"> if 1, clients will route DNS queries through the VPN.</td>
+<td align="center">reroute_dns default=0 </td>
+<td align="center"> if 1, clients will route DNS queries through the VPN</td>
 </tr>
 </tbody>
 </table>
 
 
-<ul>
-<li>Set New Security Group</li>
-</ul>
-
+<h3>Set New Security Group</h3>
 
 <table>
 <thead>
@@ -264,7 +264,7 @@
 <td align="center">TCP    </td>
 <td>443    </td>
 <td align="center">Anywhere 0.0.0.0/0</td>
-<td align="center"> OpenVPN Client Web Server|</td>
+<td align="center"> OpenVPN Client Web Server</td>
 </tr>
 <tr>
 <td></td>
@@ -272,7 +272,7 @@
 <td align="center">TCP     </td>
 <td>943    </td>
 <td align="center">Anywhere 0.0.0.0/0</td>
-<td align="center"> OpenVPN Web UI|</td>
+<td align="center"> OpenVPN Web UI</td>
 </tr>
 <tr>
 <td></td>
@@ -280,16 +280,10 @@
 <td align="center">UDP    </td>
 <td>1194    </td>
 <td align="center">Anywhere 0.0.0.0/0</td>
-<td align="center"> Initiate UDP based VPN sessions|</td>
+<td align="center"> Initiate UDP based VPN sessions</td>
 </tr>
 </tbody>
 </table>
-
-
-<ul>
-<li>Add AWS Keys</li>
-<li>Launch Instance</li>
-</ul>
 
 
 <h2>Configure OpenVPN Server</h2>
@@ -300,7 +294,7 @@
 
 <h2>Access Client Website</h2>
 
-<p><a href="https://_aws">https://_aws</a> ip_:943/admin/</p>
+<p><a href="https://">https://</a>&ldquo;aws public ip&rdquo;:943/admin/</p>
 
 <h2>Change default OpenVPN Admin Password</h2>
 
@@ -318,7 +312,7 @@
 
 <p>Login with new user account to web to download client config files.</p>
 
-<p><a href="https://_aws">https://_aws</a> ip_:943/</p>
+<p><a href="https://">https://</a>&ldquo;aws public ip&rdquo;:943/</p>
 
 <h2>Configure VPN client</h2>
 
