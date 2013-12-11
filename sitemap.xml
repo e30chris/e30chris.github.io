@@ -31,6 +31,20 @@
         <lastmod>2013-11-29T15:24:41-08:00</lastmod>
     </url>
     <url>
+        <loc>http://e30chris.github.io/vpn-setup-openvpn-server-deploy-on-aws/</loc>
+        <lastmod>2013-12-10T16:19:52-08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://e30chris.github.io/vpn-setup-fedora-to-openvpn-server/</loc>
+        <lastmod>2013-12-10T16:13:04-08:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://e30chris.github.io/vpn-setup-macbook-to-openvpn-server-using-tunnelblick/
+        </loc>
+        <lastmod>2013-12-10T16:13:54-08:00</lastmod>
+    </url>
+    <url>
         <loc>http://e30chris.github.io/assets/bootstrap/about.html</loc>
         <lastmod>2013-11-26T15:18:25-08:00</lastmod>
     </url>
@@ -52,7 +66,7 @@
     </url>
     <url>
         <loc>http://e30chris.github.io/assets/bootstrap/</loc>
-        <lastmod>2013-11-29T15:24:41-08:00</lastmod>
+        <lastmod>2013-12-10T16:19:52-08:00</lastmod>
     </url>
     <url>
         <loc>http://e30chris.github.io/assets/bootstrap/javascript.html</loc>
@@ -60,11 +74,11 @@
     </url>
     <url>
         <loc>http://e30chris.github.io/blog/archives/</loc>
-        <lastmod>2013-11-29T15:24:41-08:00</lastmod>
+        <lastmod>2013-12-10T16:19:52-08:00</lastmod>
     </url>
     <url>
         <loc>http://e30chris.github.io/</loc>
-        <lastmod>2013-11-29T15:24:41-08:00</lastmod>
+        <lastmod>2013-12-10T16:19:52-08:00</lastmod>
     </url>
     <url>
         <loc>http://e30chris.github.io/robots.txt</loc>
