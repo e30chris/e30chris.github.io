@@ -45,8 +45,8 @@ categories: webstuff
 
 ### Set New Security Group
 
-|Protocol    |Type    | Port    |Source     |Role
-|:---------|:------------|:---------|:------------|:-----------
+|  Protocol    |  Type    |  Port    |  Source     |  Role
+|:---------:|:------------:|:---------:|:------------:|:-----------
 |SSH    |TCP    |22    |Anywhere 0.0.0.0/0| Linux Access
 |HTTPS    |TCP    |443    |Anywhere 0.0.0.0/0| OpenVPN Client Web Server
 |Custom TCP Rule     |TCP     |943    |Anywhere 0.0.0.0/0| OpenVPN Web UI
