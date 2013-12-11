@@ -19,7 +19,7 @@ categories: webstuff
 ### AMI ids
 
 | AMI Location       | ami id         
-|-------------|:-------------:
+|:-------------|:-------------
 |US East (Virginia)| ami-ff6b3096
 |US West (Oregon)| ami-c8039bf8
 |US West (N California)| ami-6c0b3d29
@@ -34,8 +34,8 @@ categories: webstuff
 
 ### Set user-data
 
-|Key        |Value         
-|:---------:|:------------:
+|Key|Value         
+|:---|:----
 |public_hostname    |hostname that clients should use to contact the server
 |admin_user (default=openvpn)    |Access Server administrative account name
 |license     |Access Server license key _without a license key only 2 connections allowed_
@@ -46,7 +46,7 @@ categories: webstuff
 ### Set New Security Group
 
 |Protocol    |Type    | Port    |Source     |Role
-|:---------:|:------------:||:---------:|:------------:|:------------:
+|:---------|:------------|:---------|:------------|:-----------
 |SSH    |TCP    |22    |Anywhere 0.0.0.0/0| Linux Access
 |HTTPS    |TCP    |443    |Anywhere 0.0.0.0/0| OpenVPN Client Web Server
 |Custom TCP Rule     |TCP     |943    |Anywhere 0.0.0.0/0| OpenVPN Web UI
