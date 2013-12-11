@@ -4,7 +4,7 @@
   <title><![CDATA[Sandors Systems Scribbles]]></title>
   <link href="http://e30chris.github.io/atom.xml" rel="self"/>
   <link href="http://e30chris.github.io/"/>
-  <updated>2013-12-10T16:34:14-08:00</updated>
+  <updated>2013-12-10T16:36:17-08:00</updated>
   <id>http://e30chris.github.io/</id>
   <author>
     <name><![CDATA[chris]]></name>
@@ -155,44 +155,44 @@
 <thead>
 <tr>
 <th></th>
-<th align="left">Protocol    </th>
-<th align="left">Type    </th>
-<th align="left"> Port    </th>
-<th align="left">Source     </th>
-<th align="left">Role</th>
+<th align="center">  Protocol    </th>
+<th align="center">  Type    </th>
+<th align="center">  Port    </th>
+<th align="center">  Source     </th>
+<th align="left">  Role</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td></td>
-<td align="left">SSH    </td>
-<td align="left">TCP    </td>
-<td align="left">22    </td>
-<td align="left">Anywhere 0.0.0.0/0</td>
+<td align="center">SSH    </td>
+<td align="center">TCP    </td>
+<td align="center">22    </td>
+<td align="center">Anywhere 0.0.0.0/0</td>
 <td align="left"> Linux Access</td>
 </tr>
 <tr>
 <td></td>
-<td align="left">HTTPS    </td>
-<td align="left">TCP    </td>
-<td align="left">443    </td>
-<td align="left">Anywhere 0.0.0.0/0</td>
+<td align="center">HTTPS    </td>
+<td align="center">TCP    </td>
+<td align="center">443    </td>
+<td align="center">Anywhere 0.0.0.0/0</td>
 <td align="left"> OpenVPN Client Web Server</td>
 </tr>
 <tr>
 <td></td>
-<td align="left">Custom TCP Rule     </td>
-<td align="left">TCP     </td>
-<td align="left">943    </td>
-<td align="left">Anywhere 0.0.0.0/0</td>
+<td align="center">Custom TCP Rule     </td>
+<td align="center">TCP     </td>
+<td align="center">943    </td>
+<td align="center">Anywhere 0.0.0.0/0</td>
 <td align="left"> OpenVPN Web UI</td>
 </tr>
 <tr>
 <td></td>
-<td align="left">Custom UDP Rule     </td>
-<td align="left">UDP    </td>
-<td align="left">1194    </td>
-<td align="left">Anywhere 0.0.0.0/0</td>
+<td align="center">Custom UDP Rule     </td>
+<td align="center">UDP    </td>
+<td align="center">1194    </td>
+<td align="center">Anywhere 0.0.0.0/0</td>
 <td align="left"> Initiate UDP based VPN sessions</td>
 </tr>
 </tbody>
