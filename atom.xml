@@ -4,7 +4,7 @@
   <title><![CDATA[Sandors Systems Scribbles]]></title>
   <link href="http://e30chris.github.io/atom.xml" rel="self"/>
   <link href="http://e30chris.github.io/"/>
-  <updated>2013-12-10T16:45:21-08:00</updated>
+  <updated>2013-12-11T16:11:20-08:00</updated>
   <id>http://e30chris.github.io/</id>
   <author>
     <name><![CDATA[chris]]></name>
@@ -12,6 +12,88 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[VPN Setup - MacBook to OpenVPN Server using Tunnelblick]]></title>
+    <link href="http://e30chris.github.io/vpn-setup-macbook-to-openvpn-server-using-tunnelblick/"/>
+    <updated>2013-12-10T16:13:00-08:00</updated>
+    <id>http://e30chris.github.io/vpn-setup-macbook-to-openvpn-server-using-tunnelblick</id>
+    <content type="html"><![CDATA[<h2>The Goal</h2>
+
+<ul>
+<li>Get MacBook to connect to a OpenVPN Server</li>
+<li>Install Tunnelblick to make that happen</li>
+</ul>
+
+
+<!-- more -->
+
+
+<h2>Setup the OpenVPN Server</h2>
+
+<ul>
+<li>Follow this &ndash; <a href="http://sandorsscribbl.es/vpn-setup-openvpn-server-deploy-on-aws/">sandorsscribbl.es/vpn-setup-openvpn-server-deploy-on-aws</a></li>
+</ul>
+
+
+<h2>Install Tunnelblick</h2>
+
+<p><a href="https://code.google.com/p/tunnelblick/">Tunnelblick Google Code</a></p>
+
+<h2>Download OpenVPN Client Config file</h2>
+
+<ul>
+<li>Goto OpenVPN web client</li>
+<li>Login with new user</li>
+<li>Choose to download cert</li>
+</ul>
+
+
+<h2>Modify Client Config File for Tunnelblick</h2>
+
+<ul>
+<li>Create a folder for the new config / VPN connection</li>
+<li>The $vpnname.tblk folder is where that VPN connection is saved</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sandor@pineAplez&gt; mkdir -p ~/Library/Application\ Support/Tunnelblick/Configurations/argovoyage.tblk/Contents/Resources/</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Copy the .ovpn client config file to that directory</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sandor@pineAplez&gt; cp ~/Downloads/client.ovpn ~/Library/Application\ Support/Tunnelblick/Configurations/argovoyage.tblk/Contents/Resources/.</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Start Tunnelblick</h2>
+
+<ul>
+<li>Choose VPN from the tunnel</li>
+</ul>
+
+
+<h2>The Test</h2>
+
+<ul>
+<li>Verify IP using Tunnelblick</li>
+<li>Verify IP with Tunnelblick off</li>
+<li><a href="http://ipchicken.com/">IP Chicken</a></li>
+</ul>
+
+
+<h2>The Result</h2>
+
+<ul>
+<li>Using a VPN your nets are safe from all prying eyes except the NSAs</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[VPN Setup - OpenVPN Server Deploy on AWS]]></title>
