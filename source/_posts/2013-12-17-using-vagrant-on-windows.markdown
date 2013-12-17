@@ -3,7 +3,7 @@ layout: post
 title: "Using Vagrant on Windows"
 date: 2013-12-17 12:10
 comments: false
-categories: Vagrant
+categories: vagrant
 ---
 
 ## The Goal
