@@ -4,7 +4,7 @@
   <title><![CDATA[Sandors Systems Scribbles]]></title>
   <link href="http://e30chris.github.io/atom.xml" rel="self"/>
   <link href="http://e30chris.github.io/"/>
-  <updated>2013-12-11T16:11:20-08:00</updated>
+  <updated>2013-12-17T12:11:39-08:00</updated>
   <id>http://e30chris.github.io/</id>
   <author>
     <name><![CDATA[chris]]></name>
@@ -12,6 +12,95 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Using Vagrant on Windows]]></title>
+    <link href="http://e30chris.github.io/using-vagrant-on-windows/"/>
+    <updated>2013-12-17T12:10:00-08:00</updated>
+    <id>http://e30chris.github.io/using-vagrant-on-windows</id>
+    <content type="html"><![CDATA[<h2>The Goal</h2>
+
+<ul>
+<li>Install and configure VirtualBox &amp; Vagrant on your Windows dev box</li>
+<li>Download and start a Linux &amp; Windows Vagrant Box.</li>
+</ul>
+
+
+<!-- more -->
+
+
+<h2>Install</h2>
+
+<ul>
+<li>VirtualBox &ndash; <a href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a></li>
+<li>Vagrant &ndash; <a href="http://www.vagrantup.com/downloads">http://www.vagrantup.com/downloads</a>
+
+<ul>
+<li>Download the .msi</li>
+<li>Right click and <code>Install as Administrator</code></li>
+</ul>
+</li>
+</ul>
+
+
+<h2>Add a Vagrant Box</h2>
+
+<ul>
+<li>Open a Command Prompt and <code>Run as Administrator</code></li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>C:\Windows\system32\&gt;vagrant box add centosPupLabs http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-vbox4210-nocm.box</span></code></pre></td></tr></table></div></figure>
+
+
+<p>What that does:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>C:\Windows\system32\&gt;vagrant box add boxName http://url.box</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Downloads the .box file to the Vagrant boxes directory</li>
+<li>nocm = No &ldquo;configuration management&rdquo; installed</li>
+<li>We will use a Vagrant plugin called Oscar to install and configure the PuppetMaster and Agent in a separate post.</li>
+</ul>
+
+
+<h2>Start the Vagrant Box</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>C:\stuff\vagrants\&gt;vagrant init centosPupLabs</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>C:\stuff\vagrants\&gt;vagrant up</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>C:\stuff\vagrants\&gt;vagrant ssh</span></code></pre></td></tr></table></div></figure>
+
+
+<p>What that does:</p>
+
+<ul>
+<li>Tells Vagrant to write a VagrantConfig file in <code>C:\stuff\vagrants\</code></li>
+<li>Vagrant then boots the centosPupLabs VirtualBox machine</li>
+<li>SSH into the VM
+
+<ul>
+<li>Must have Cygwin or Git installed</li>
+<li>You can also use PuTTY</li>
+</ul>
+</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[VPN Setup - MacBook to OpenVPN Server using Tunnelblick]]></title>

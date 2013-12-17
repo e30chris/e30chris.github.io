@@ -4,7 +4,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Blog Archive - Sandors Systems Scribbles</title>
+  <title>Using Vagrant on Windows - Sandors Systems Scribbles</title>
   <meta name="author" content="chris">
 
   
@@ -16,7 +16,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://e30chris.github.io/blog/archives">
+  <link rel="canonical" href="http://e30chris.github.io/using-vagrant-on-windows">
   <link href="/favicon.png" type="image/png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="Sandors Systems Scribbles" type="application/atom+xml">
 
@@ -58,10 +58,10 @@
 
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li >
+                <li class="active">
                     <a href="/">Blog</a>
                 </li>
-                <li class="active">
+                <li >
                     <a href="/blog/archives">Archives</a>
                 </li>
             </ul>
@@ -92,31 +92,12 @@
         <div id="content">
           <div class="row">
   <div class="page-content col-md-9">
-    <article role="article">
+    <article class="hentry" role="article">
       
-        <header class="page-header">
-          
-          
-            <h1 class="entry-title">
-              Blog Archive
-              
-            </h1>
-          
-        </header>
-      
-      <div class="entry-content">
-        <div id="blog-archives">
-
-
-
-  
-  <h2>2013</h2>
-
-<article class="page-header">
-  
-<h1><a href="/using-vagrant-on-windows/">Using Vagrant on Windows</a></h1>
-<p class="meta text-muted">
-  
+  <header class="page-header">
+    
+      <p class="meta text-muted text-uppercase">
+        
 
 
 
@@ -130,7 +111,124 @@
 
 
 <span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-12-17T12:10:00-08:00" pubdate data-updated="true">Dec 17<span>th</span>, 2013</time>
+        
+      </p>
+    
+    
+    <h1 class="entry-title">
+        Using Vagrant on Windows
+        
+    </h1>
+    
+  </header>
+
+
+<div class="entry-content clearfix"><h2>The Goal</h2>
+
+<ul>
+<li>Install and configure VirtualBox &amp; Vagrant on your Windows dev box</li>
+<li>Download and start a Linux &amp; Windows Vagrant Box.</li>
+</ul>
+
+
+<!-- more -->
+
+
+<h2>Install</h2>
+
+<ul>
+<li>VirtualBox &ndash; <a href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a></li>
+<li>Vagrant &ndash; <a href="http://www.vagrantup.com/downloads">http://www.vagrantup.com/downloads</a>
+
+<ul>
+<li>Download the .msi</li>
+<li>Right click and <code>Install as Administrator</code></li>
+</ul>
+</li>
+</ul>
+
+
+<h2>Add a Vagrant Box</h2>
+
+<ul>
+<li>Open a Command Prompt and <code>Run as Administrator</code></li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>C:\Windows\system32\&gt;vagrant box add centosPupLabs http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-vbox4210-nocm.box</span></code></pre></td></tr></table></div></figure>
+
+
+<p>What that does:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>C:\Windows\system32\&gt;vagrant box add boxName http://url.box</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Downloads the .box file to the Vagrant boxes directory</li>
+<li>nocm = No &ldquo;configuration management&rdquo; installed</li>
+<li>We will use a Vagrant plugin called Oscar to install and configure the PuppetMaster and Agent in a separate post.</li>
+</ul>
+
+
+<h2>Start the Vagrant Box</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>C:\stuff\vagrants\&gt;vagrant init centosPupLabs</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>C:\stuff\vagrants\&gt;vagrant up</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>C:\stuff\vagrants\&gt;vagrant ssh</span></code></pre></td></tr></table></div></figure>
+
+
+<p>What that does:</p>
+
+<ul>
+<li>Tells Vagrant to write a VagrantConfig file in <code>C:\stuff\vagrants\</code></li>
+<li>Vagrant then boots the centosPupLabs VirtualBox machine</li>
+<li>SSH into the VM
+
+<ul>
+<li>Must have Cygwin or Git installed</li>
+<li>You can also use PuTTY</li>
+</ul>
+</li>
+</ul>
+
+</div>
+
+
+      <footer>
+        <p class="meta text-muted">
+          
   
+
+<span class="glyphicon glyphicon-user"></span> <span class="byline author vcard">Posted by <span class="fn">chris</span></span>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-12-17T12:10:00-08:00" pubdate data-updated="true">Dec 17<span>th</span>, 2013</time>
+          
 
 <span class="glyphicon glyphicon-tags"></span>&nbsp;
 <span class="categories">
@@ -140,328 +238,45 @@
 </span>
 
 
-</p>
-
-</article>
-
-
-
-<article class="page-header">
+        </p>
+        
+          <div class="sharing">
   
-<h1><a href="/vpn-setup-macbook-to-openvpn-server-using-tunnelblick/">VPN Setup - MacBook to OpenVPN Server using Tunnelblick</a></h1>
-<p class="meta text-muted">
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://e30chris.github.io/using-vagrant-on-windows/" data-via="e30chris" data-counturl="http://e30chris.github.io/using-vagrant-on-windows/" >Tweet</a>
   
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-12-10T16:13:00-08:00" pubdate data-updated="true">Dec 10<span>th</span>, 2013</time>
   
-
-<span class="glyphicon glyphicon-tags"></span>&nbsp;
-<span class="categories">
+  <div class="g-plusone" data-size="medium"></div>
   
-    <a class='category' href='/categories/webstuff/'>webstuff</a>
   
-</span>
-
-
-</p>
-
-</article>
-
-
-
-<article class="page-header">
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
   
-<h1><a href="/vpn-setup-openvpn-server-deploy-on-aws/">VPN Setup - OpenVPN Server Deploy on AWS</a></h1>
-<p class="meta text-muted">
-  
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-12-10T15:36:00-08:00" pubdate data-updated="true">Dec 10<span>th</span>, 2013</time>
-  
-
-<span class="glyphicon glyphicon-tags"></span>&nbsp;
-<span class="categories">
-  
-    <a class='category' href='/categories/webstuff/'>webstuff</a>
-  
-</span>
-
-
-</p>
-
-</article>
-
-
-
-<article class="page-header">
-  
-<h1><a href="/add-webproxy-cert-to-fedora/">Add WebProxy Cert to Fedora</a></h1>
-<p class="meta text-muted">
-  
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-11-29T15:19:00-08:00" pubdate data-updated="true">Nov 29<span>th</span>, 2013</time>
-  
-
-<span class="glyphicon glyphicon-tags"></span>&nbsp;
-<span class="categories">
-  
-    <a class='category' href='/categories/webstuff/'>webstuff</a>
-  
-</span>
-
-
-</p>
-
-</article>
-
-
-
-<article class="page-header">
-  
-<h1><a href="/add-twitter-timeline-to-octopress-sidebar/">Add Twitter Timeline to OctoPress Sidebar</a></h1>
-<p class="meta text-muted">
-  
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-11-26T17:20:00-08:00" pubdate data-updated="true">Nov 26<span>th</span>, 2013</time>
-  
-
-<span class="glyphicon glyphicon-tags"></span>&nbsp;
-<span class="categories">
-  
-    <a class='category' href='/categories/webstuff/'>webstuff</a>
-  
-</span>
-
-
-</p>
-
-</article>
-
-
-
-<article class="page-header">
-  
-<h1><a href="/add-twitter-bootstrap-3-to-octopress-with-octostrap3/">Add Twitter Bootstrap 3 to OctoPress with OctoStrap3</a></h1>
-<p class="meta text-muted">
-  
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-11-26T16:41:00-08:00" pubdate data-updated="true">Nov 26<span>th</span>, 2013</time>
-  
-
-<span class="glyphicon glyphicon-tags"></span>&nbsp;
-<span class="categories">
-  
-    <a class='category' href='/categories/webstuff/'>webstuff</a>
-  
-</span>
-
-
-</p>
-
-</article>
-
-
-
-<article class="page-header">
-  
-<h1><a href="/post-to-octopress-and-deploy-to-github-pages/">post to octopress and deploy to github pages</a></h1>
-<p class="meta text-muted">
-  
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-11-12T21:06:00-08:00" pubdate data-updated="true">Nov 12<span>th</span>, 2013</time>
-  
-
-
-</p>
-
-</article>
-
-
-
-<article class="page-header">
-  
-<h1><a href="/puppet-vim-setup/">puppet vim setup</a></h1>
-<p class="meta text-muted">
-  
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-11-12T21:04:00-08:00" pubdate data-updated="true">Nov 12<span>th</span>, 2013</time>
-  
-
-<span class="glyphicon glyphicon-tags"></span>&nbsp;
-<span class="categories">
-  
-    <a class='category' href='/categories/puppet/'>puppet</a>, <a class='category' href='/categories/vim/'>vim</a>
-  
-</span>
-
-
-</p>
-
-</article>
-
-
-
-<article class="page-header">
-  
-<h1><a href="/auto-update-virtualbox-guest-additions-with-vagrant-vbguest/">Auto Update VirtualBox Guest Additions with vagrant-vbguest</a></h1>
-<p class="meta text-muted">
-  
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-11-12T21:01:00-08:00" pubdate data-updated="true">Nov 12<span>th</span>, 2013</time>
-  
-
-<span class="glyphicon glyphicon-tags"></span>&nbsp;
-<span class="categories">
-  
-    <a class='category' href='/categories/vagrant/'>vagrant</a>
-  
-</span>
-
-
-</p>
-
-</article>
-
-
-
-<article class="page-header">
-  
-<h1><a href="/vanilla-vagrant-setup/">vanilla vagrant setup</a></h1>
-<p class="meta text-muted">
-  
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-11-12T20:57:00-08:00" pubdate data-updated="true">Nov 12<span>th</span>, 2013</time>
-  
-
-<span class="glyphicon glyphicon-tags"></span>&nbsp;
-<span class="categories">
-  
-    <a class='category' href='/categories/vagrant/'>vagrant</a>
-  
-</span>
-
-
-</p>
-
-</article>
-
 </div>
 
-      </div>
-      
+        
+        
+          <ul class="meta text-muted pager">
+            
+            <li class="previous"><a href="/vpn-setup-macbook-to-openvpn-server-using-tunnelblick/" title="Previous Post: VPN Setup - MacBook to OpenVPN Server using Tunnelblick">&laquo; VPN Setup - MacBook to OpenVPN Server using Tunnelblick</a></li>
+            
+            
+          </ul>
+        
+      </footer>
     </article>
     
   </div>
 
   
-    <aside class="sidebar col-md-3">
-      
-        <section class="panel panel-default">
+  <aside class="sidebar col-md-3">
+    
+      <section class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">Recent Posts</h3>
   </div>
   
   <div id="recent_posts" class="list-group">
     
-    <a class="list-group-item " href="/using-vagrant-on-windows/">Using Vagrant on Windows</a>
+    <a class="list-group-item active" href="/using-vagrant-on-windows/">Using Vagrant on Windows</a>
     
     <a class="list-group-item " href="/vpn-setup-macbook-to-openvpn-server-using-tunnelblick/">VPN Setup - MacBook to OpenVPN Server Using Tunnelblick</a>
     
@@ -565,8 +380,8 @@
 
 
 
-      
-    </aside>
+    
+  </aside>
   
 </div>
 
