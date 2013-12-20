@@ -4,7 +4,7 @@
   <title><![CDATA[Sandors Systems Scribbles]]></title>
   <link href="http://e30chris.github.io/atom.xml" rel="self"/>
   <link href="http://e30chris.github.io/"/>
-  <updated>2013-12-20T11:29:51-08:00</updated>
+  <updated>2013-12-20T11:31:27-08:00</updated>
   <id>http://e30chris.github.io/</id>
   <author>
     <name><![CDATA[chris]]></name>
@@ -25,6 +25,9 @@
 <li>Use Oscar to build a local PuppetMaster &amp; Agent config</li>
 <li>Use Vagrant to start the PuppetMaster &amp; Agent</li>
 </ul>
+
+
+<!-- more -->
 
 
 <h2>Install</h2>

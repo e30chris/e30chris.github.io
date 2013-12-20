@@ -133,86 +133,12 @@
 </ul>
 
 
-<h2>Install</h2>
-
-<ul>
-<li>VirtualBox &ndash; <a href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a></li>
-<li>Vagrant &ndash; Oscar works with Vagrant version 1.3.4 &ndash; <a href="http://downloads.vagrantup.com/tags/v1.3.4">http://downloads.vagrantup.com/tags/v1.3.4</a></li>
-</ul>
-
-
-<h2>Add a Vagrant Box</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sandor@pineApplez&gt; vagrant box add centosPupLabs http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-vbox4210-nocm.box</span></code></pre></td></tr></table></div></figure>
-
-
-<p>What that does:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sandor@pineApplez&gt; vagrant box add boxName http://url.box</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>Downloads the .box file to the Vagrant boxes directory</li>
-<li>nocm = No &ldquo;configuration management&rdquo; installed</li>
-</ul>
-
-
-<h2>Create a Vagrant environment with Oscar</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sandor@pineApplez&gt; vagrant oscar init</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sandor@pineApplez&gt; vagrant oscar init-vms \
-</span><span class='line'>                   --master master=centosPupLabs \
-</span><span class='line'>                   --agent firstagent=centosPupLabs 
-</span><span class='line'>                   --agent secondagent=centosPupLabs</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sandor@pineApplez&gt; vagrant up</span></code></pre></td></tr></table></div></figure>
-
-
-<p>What that does:</p>
-
-<ul>
-<li>Creates a Vagrantfile that is customized by Oscar</li>
-<li>Adds a PuppetMaster and 2 agents to the Vagrant environment</li>
-<li>Uses the PuppetLabs Centos box as the OS for all 3 VMsgs</li>
-<li>Starts the group of VMs</li>
-</ul>
-
-
-<h2>Login to the VMs</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sandor@pineApplez&gt; vagrant ssh master
-</span><span class='line'>sandor@pineApplez&gt; vagrant ssh firstagent
-</span><span class='line'>sandor@pineApplez&gt; vagrant ssh secondagent</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>The result</h2>
-
-<ul>
-<li>3 running VMs with a PuppetMaster and 2 agents</li>
-<li>Both Agents are authenticated with the Master</li>
-<li>You can now run your Puppet code</li>
-</ul>
-
 </div>
   
+  
+    <footer>
+      <a class="btn btn-default" rel="full-article" href="/using-oscar-to-build-a-local-puppet-environment-with-vagrant/">Read on &rarr;</a>
+    </footer>
   
 
 
