@@ -4,10 +4,10 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: vagrant - Sandors Systems Scribbles</title>
+  <title>Using Oscar to Build a Local Puppet Environment with Vagrant - Sandors Systems Scribbles</title>
   <meta name="author" content="chris">
 
-  <meta name="description" content="Category: vagrant">
+  
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -16,7 +16,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://e30chris.github.iocategories/vagrant">
+  <link rel="canonical" href="http://e30chris.github.io/using-oscar-to-build-a-local-puppet-environment-with-vagrant">
   <link href="/favicon.png" type="image/png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="Sandors Systems Scribbles" type="application/atom+xml">
 
@@ -58,10 +58,10 @@
 
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li >
+                <li class="active">
                     <a href="/">Blog</a>
                 </li>
-                <li class="active">
+                <li >
                     <a href="/blog/archives">Archives</a>
                 </li>
             </ul>
@@ -92,31 +92,12 @@
         <div id="content">
           <div class="row">
   <div class="page-content col-md-9">
-    <article role="article">
+    <article class="hentry" role="article">
       
-        <header class="page-header">
-          
-          
-            <h1 class="entry-title">
-              Category: Vagrant
-              
-            </h1>
-          
-        </header>
-      
-      <div class="entry-content">
-        <div id="blog-archives" class="category">
-
-
-
-  
-  <h2>2013</h2>
-
-<article class="page-header">
-  
-<h1><a href="/using-oscar-to-build-a-local-puppet-environment-with-vagrant/">Using Oscar to Build a Local Puppet Environment with Vagrant</a></h1>
-<p class="meta text-muted">
-  
+  <header class="page-header">
+    
+      <p class="meta text-muted text-uppercase">
+        
 
 
 
@@ -130,141 +111,178 @@
 
 
 <span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-12-20T11:22:00-08:00" pubdate data-updated="true">Dec 20<span>th</span>, 2013</time>
-  
-
-<span class="glyphicon glyphicon-tags"></span>&nbsp;
-<span class="categories">
-  
-    <a class='category' href='/categories/vagrant/'>vagrant</a>
-  
-</span>
-
-
-</p>
-
-</article>
+        
+      </p>
+    
+    
+    <h1 class="entry-title">
+        Using Oscar to Build a Local Puppet Environment With Vagrant
+        
+    </h1>
+    
+  </header>
 
 
+<div class="entry-content clearfix"><h2>The Goal</h2>
 
-<article class="page-header">
-  
-<h1><a href="/using-vagrant-on-windows/">Using Vagrant on Windows</a></h1>
-<p class="meta text-muted">
-  
-
-
-
+<ul>
+<li>Install Oscar</li>
+<li>Use Oscar to build a local PuppetMaster &amp; Agent config</li>
+<li>Use Vagrant to start the PuppetMaster &amp; Agent</li>
+</ul>
 
 
+<h2>Install</h2>
+
+<ul>
+<li>VirtualBox &ndash; <a href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a></li>
+<li>Vagrant &ndash; Oscar works with Vagrant version 1.3.4 &ndash; <a href="http://downloads.vagrantup.com/tags/v1.3.4">http://downloads.vagrantup.com/tags/v1.3.4</a></li>
+</ul>
 
 
+<h2>Add a Vagrant Box</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sandor@pineApplez&gt; vagrant box add centosPupLabs http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-vbox4210-nocm.box</span></code></pre></td></tr></table></div></figure>
 
 
+<p>What that does:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sandor@pineApplez&gt; vagrant box add boxName http://url.box</span></code></pre></td></tr></table></div></figure>
 
 
-
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-12-17T12:10:00-08:00" pubdate data-updated="true">Dec 17<span>th</span>, 2013</time>
-  
-
-<span class="glyphicon glyphicon-tags"></span>&nbsp;
-<span class="categories">
-  
-    <a class='category' href='/categories/vagrant/'>vagrant</a>
-  
-</span>
+<ul>
+<li>Downloads the .box file to the Vagrant boxes directory</li>
+<li>nocm = No &ldquo;configuration management&rdquo; installed</li>
+</ul>
 
 
-</p>
+<h2>Create a Vagrant environment with Oscar</h2>
 
-</article>
-
-
-
-<article class="page-header">
-  
-<h1><a href="/auto-update-virtualbox-guest-additions-with-vagrant-vbguest/">Auto Update VirtualBox Guest Additions with vagrant-vbguest</a></h1>
-<p class="meta text-muted">
-  
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sandor@pineApplez&gt; vagrant oscar init</span></code></pre></td></tr></table></div></figure>
 
 
 
 
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sandor@pineApplez&gt; vagrant oscar init-vms \
+</span><span class='line'>                   --master master=centosPupLabs \
+</span><span class='line'>                   --agent firstagent=centosPupLabs 
+</span><span class='line'>                   --agent secondagent=centosPupLabs</span></code></pre></td></tr></table></div></figure>
 
 
 
 
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sandor@pineApplez&gt; vagrant up</span></code></pre></td></tr></table></div></figure>
 
 
+<p>What that does:</p>
+
+<ul>
+<li>Creates a Vagrantfile that is customized by Oscar</li>
+<li>Adds a PuppetMaster and 2 agents to the Vagrant environment</li>
+<li>Uses the PuppetLabs Centos box as the OS for all 3 VMsgs</li>
+<li>Starts the group of VMs</li>
+</ul>
 
 
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-11-12T21:01:00-08:00" pubdate data-updated="true">Nov 12<span>th</span>, 2013</time>
-  
+<h2>Login to the VMs</h2>
 
-<span class="glyphicon glyphicon-tags"></span>&nbsp;
-<span class="categories">
-  
-    <a class='category' href='/categories/vagrant/'>vagrant</a>
-  
-</span>
-
-
-</p>
-
-</article>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sandor@pineApplez&gt; vagrant ssh master
+</span><span class='line'>sandor@pineApplez&gt; vagrant ssh firstagent
+</span><span class='line'>sandor@pineApplez&gt; vagrant ssh secondagent</span></code></pre></td></tr></table></div></figure>
 
 
+<h2>The result</h2>
 
-<article class="page-header">
-  
-<h1><a href="/vanilla-vagrant-setup/">vanilla vagrant setup</a></h1>
-<p class="meta text-muted">
-  
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-11-12T20:57:00-08:00" pubdate data-updated="true">Nov 12<span>th</span>, 2013</time>
-  
-
-<span class="glyphicon glyphicon-tags"></span>&nbsp;
-<span class="categories">
-  
-    <a class='category' href='/categories/vagrant/'>vagrant</a>
-  
-</span>
-
-
-</p>
-
-</article>
+<ul>
+<li>3 running VMs with a PuppetMaster and 2 agents</li>
+<li>Both Agents are authenticated with the Master</li>
+<li>You can now run your Puppet code</li>
+</ul>
 
 </div>
 
-      </div>
-      
+
+      <footer>
+        <p class="meta text-muted">
+          
+  
+
+<span class="glyphicon glyphicon-user"></span> <span class="byline author vcard">Posted by <span class="fn">chris</span></span>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-12-20T11:22:00-08:00" pubdate data-updated="true">Dec 20<span>th</span>, 2013</time>
+          
+
+<span class="glyphicon glyphicon-tags"></span>&nbsp;
+<span class="categories">
+  
+    <a class='category' href='/categories/vagrant/'>vagrant</a>
+  
+</span>
+
+
+        </p>
+        
+          <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://e30chris.github.io/using-oscar-to-build-a-local-puppet-environment-with-vagrant/" data-via="e30chris" data-counturl="http://e30chris.github.io/using-oscar-to-build-a-local-puppet-environment-with-vagrant/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+        
+        
+          <ul class="meta text-muted pager">
+            
+            <li class="previous"><a href="/using-vagrant-on-windows/" title="Previous Post: Using Vagrant on Windows">&laquo; Using Vagrant on Windows</a></li>
+            
+            
+          </ul>
+        
+      </footer>
     </article>
     
   </div>
 
   
-    <aside class="sidebar col-md-3">
-      
-        <section class="panel panel-default">
+  <aside class="sidebar col-md-3">
+    
+      <section class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">Recent Posts</h3>
   </div>
   
   <div id="recent_posts" class="list-group">
     
-    <a class="list-group-item " href="/using-oscar-to-build-a-local-puppet-environment-with-vagrant/">Using Oscar to Build a Local Puppet Environment With Vagrant</a>
+    <a class="list-group-item active" href="/using-oscar-to-build-a-local-puppet-environment-with-vagrant/">Using Oscar to Build a Local Puppet Environment With Vagrant</a>
     
     <a class="list-group-item " href="/using-vagrant-on-windows/">Using Vagrant on Windows</a>
     
@@ -283,7 +301,7 @@
   <div class="list-group">
     
     
-    <a class="list-group-item active" href="/categories/vagrant/index.html">
+    <a class="list-group-item " href="/categories/vagrant/index.html">
         <span class="badge">4</span>
         vagrant
       </a>
@@ -362,8 +380,8 @@
 
 
 
-      
-    </aside>
+    
+  </aside>
   
 </div>
 
