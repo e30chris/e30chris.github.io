@@ -18,6 +18,11 @@ categories: vagrant
 
 - VirtualBox - [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)
 - Vagrant - Oscar works with Vagrant version 1.3.4 - [http://downloads.vagrantup.com/tags/v1.3.4](http://downloads.vagrantup.com/tags/v1.3.4)
+- Oscar - [https://github.com/adrienthebo/oscar](https://github.com/adrienthebo/oscar)
+
+```
+sandor@pineApplez> vagrant plugin install oscar
+```
 
 
 ## Add a Vagrant Box
