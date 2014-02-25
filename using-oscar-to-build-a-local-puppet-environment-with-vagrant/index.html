@@ -168,6 +168,31 @@
 
 <h2>Create a Vagrant environment with Oscar</h2>
 
+<p>Give Vagrant a Puppet Enterprise installer location &amp; version.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sandor@pineApplez&gt; vim config/pe_build.yaml
+</span><span class='line'>
+</span><span class='line'>---
+</span><span class='line'> pe_build:
+</span><span class='line'>   version: "3.1.3"
+</span><span class='line'>   #download_root: 'http://s3.amazonpebucket.com'
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Set the download_root or manually add the installer with</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sandor@pineApplez&gt; vagrant pe-build copy puppet-enterprise-3.1.3-el-6-x86_64.tar.gz</span></code></pre></td></tr></table></div></figure>
+
+
+
+
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>sandor@pineApplez&gt; vagrant oscar init</span></code></pre></td></tr></table></div></figure>
 

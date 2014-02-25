@@ -4,7 +4,7 @@
   <title><![CDATA[Category: vagrant | Sandors Systems Scribbles]]></title>
   <link href="http://e30chris.github.io/categories/vagrant/atom.xml" rel="self"/>
   <link href="http://e30chris.github.io/"/>
-  <updated>2014-02-21T11:21:38-08:00</updated>
+  <updated>2014-02-24T16:35:30-08:00</updated>
   <id>http://e30chris.github.io/</id>
   <author>
     <name><![CDATA[chris]]></name>
@@ -62,6 +62,25 @@ sandor@pineApplez&gt; vagrant box add boxName http://url.box
 
 
 <h2>Create a Vagrant environment with Oscar</h2>
+
+<p>Give Vagrant a Puppet Enterprise installer location &amp; version.</p>
+
+<p>```
+sandor@pineApplez> vim config/pe_build.yaml</p>
+
+<hr />
+
+<p> pe_build:
+   version: &ldquo;3.1.3&rdquo;
+   #download_root: &lsquo;<a href="http://s3.amazonpebucket.com">http://s3.amazonpebucket.com</a>&rsquo;</p>
+
+<p>```</p>
+
+<p>Set the download_root or manually add the installer with</p>
+
+<p><code>
+sandor@pineApplez&gt; vagrant pe-build copy puppet-enterprise-3.1.3-el-6-x86_64.tar.gz
+</code></p>
 
 <p><code>
 sandor@pineApplez&gt; vagrant oscar init
