@@ -43,6 +43,23 @@ sandor@pineApplez> vagrant box add boxName http://url.box
 
 ## Create a Vagrant environment with Oscar
 
+Give Vagrant a Puppet Enterprise installer location & version.
+
+```
+sandor@pineApplez> vim config/pe_build.yaml
+
+---
+ pe_build:
+   version: "3.1.3"
+   #download_root: 'http://s3.amazonpebucket.com'
+
+```
+
+Set the download_root or manually add the installer with
+
+```
+sandor@pineApplez> vagrant pe-build copy puppet-enterprise-3.1.3-el-6-x86_64.tar.gz
+```
 
 ``` 
 sandor@pineApplez> vagrant oscar init
