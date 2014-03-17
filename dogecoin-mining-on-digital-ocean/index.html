@@ -4,7 +4,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Add WebProxy Cert to Fedora - Sandors Systems Scribbles</title>
+  <title>Dogecoin mining on Digital Ocean - Sandors Systems Scribbles</title>
   <meta name="author" content="chris">
 
   
@@ -16,7 +16,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://e30chris.github.io/add-webproxy-cert-to-fedora">
+  <link rel="canonical" href="http://e30chris.github.io/dogecoin-mining-on-digital-ocean">
   <link href="/favicon.png" type="image/png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="Sandors Systems Scribbles" type="application/atom+xml">
 
@@ -110,41 +110,134 @@
 
 
 
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-11-29T15:19:00-08:00" pubdate data-updated="true">Nov 29<span>th</span>, 2013</time>
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-03-12T15:41:00-07:00" pubdate data-updated="true">Mar 12<span>th</span>, 2014</time>
         
       </p>
     
     
     <h1 class="entry-title">
-        Add WebProxy Cert to Fedora
+        Dogecoin Mining on Digital Ocean
         
     </h1>
     
   </header>
 
 
-<div class="entry-content clearfix"><h2>The Goal</h2>
+<div class="entry-content clearfix"><h1>The Goal</h1>
 
-<ul>
-<li>Make Fedora work behind a restrictive idiotic corporate web proxy</li>
-<li>Install a corporate cert to make that happen</li>
-</ul>
-
+<p>Create a droplet on Digital Ocean to mine Dogecoins so fun much profits.</p>
 
 <!-- more -->
 
 
-<h2>Get the cert</h2>
+<h1>The Links</h1>
 
-<h2>Install the cert</h2>
+<ul>
+<li>Dogecoin &ndash; <a href="http://dogecoin.com/">very link</a></li>
+<li>/r/dogecoin &ndash; <a href="http://www.reddit.com/r/dogecoin">so reddit</a></li>
+<li>/r/dogemining &ndash; <a href="http://www.reddit.com/r/dogemining">many mines</a></li>
+<li>Dogecoin Mining Pools &ndash; <a href="http://www.doktorrf.com/dogecoin/pools.html">much swim</a></li>
+<li>Dogecoin Resources &ndash; <a href="https://github.com/ummjackson/dogecoin-resources">sources</a></li>
+<li>Dogecoin Foundation &ndash; <a href="http://foundation.dogecoin.com/">now found</a></li>
+<li>Digital Ocean &ndash; <a href="https://www.digitalocean.com">awesome drops</a></li>
+<li>TugBoat &ndash; <a href="https://www.digitalocean.com/community/articles/how-to-use-tugboat-to-manage-digitalocean-droplets-from-a-terminal">command line ocean</a></li>
+</ul>
+
+
+<h1>Create a droplet</h1>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>spudBud@pineApplez&gt; openssl x509 -text -in /path/to/proxycert.crt &gt;&gt; /etc/pki/tls/certs/ca-bundle.crt</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sandor@argo&gt; tugboat create lucydoge -s 62 -i 308287 -r 3 -k 44888</span></code></pre></td></tr></table></div></figure>
 
 
-<h2>The result</h2>
 
-<p>Your corporate overlord has now man in the middled your personal gmail, have fun.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Name:             lucydoge
+</span><span class='line'>Status:           active
+</span><span class='line'>Region ID:        3
+</span><span class='line'>Image ID:         308287
+</span><span class='line'>Size ID:          62
+</span><span class='line'>Backups Active:   false
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Create user</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>root@lucydoge:~# history
+</span><span class='line'>root@lucydoge:~# ls -al
+</span><span class='line'>root@lucydoge:~# useradd -m lucy
+</span><span class='line'>root@lucydoge:~# passwd lucy
+</span><span class='line'>root@lucydoge:~# adduser lucy sudo</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Update Debian</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>root@lucydoge:~# apt-get -y update && apt-get -y upgrade</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Install Screen</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>root@lucydoge:~# apt-get install screen</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Install a CPU Miner</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>root@lucydoge:~# sudo apt-get install git build-essential autotools-dev libcurl4-gnutls-dev autoconf automake</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>lucy@lucydoge:~# mkdir ~/miner2049er</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>lucy@lucydoge:~# cd miner2049er
+</span><span class='line'>lucy@lucydoge:~# git clone https://github.com/pooler/cpuminer.git
+</span><span class='line'>lucy@lucydoge:~# cd cpuminer 
+</span><span class='line'>lucy@lucydoge:~# ./autogen.sh 
+</span><span class='line'>lucy@lucydoge:~# CFLAGS="-O3 -Wall -msse2" ./configure
+</span><span class='line'>lucy@lucydoge:~# make</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Find a Mining Pool</h1>
+
+<p><a href="http://www.doktorrf.com/dogecoin/pools.html">Mining Pools</a></p>
+
+<ul>
+<li>Create a new address for mining deposits</li>
+<li>Add that mining address to your pool profile</li>
+</ul>
+
+
+<h1>Start mining</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>lucy@lucydoge:~# ./minerd --url stratum+tcp://server:port --userpass worker.name:password</span></code></pre></td></tr></table></div></figure>
+
+
+<p>enjoy much coins</p>
 </div>
 
 
@@ -168,13 +261,13 @@
 
 
 
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-11-29T15:19:00-08:00" pubdate data-updated="true">Nov 29<span>th</span>, 2013</time>
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-03-12T15:41:00-07:00" pubdate data-updated="true">Mar 12<span>th</span>, 2014</time>
           
 
 <span class="glyphicon glyphicon-tags"></span>&nbsp;
 <span class="categories">
   
-    <a class='category' href='/categories/webstuff/'>webstuff</a>
+    <a class='category' href='/categories/coins/'>coins</a>
   
 </span>
 
@@ -183,7 +276,7 @@
         
           <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://e30chris.github.io/add-webproxy-cert-to-fedora/" data-via="e30chris" data-counturl="http://e30chris.github.io/add-webproxy-cert-to-fedora/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://e30chris.github.io/dogecoin-mining-on-digital-ocean/" data-via="e30chris" data-counturl="http://e30chris.github.io/dogecoin-mining-on-digital-ocean/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -197,10 +290,8 @@
         
           <ul class="meta text-muted pager">
             
-            <li class="previous"><a href="/add-twitter-timeline-to-octopress-sidebar/" title="Previous Post: Add Twitter Timeline to OctoPress Sidebar">&laquo; Add Twitter Timeline to OctoPress Sidebar</a></li>
+            <li class="previous"><a href="/using-oscar-to-build-a-local-puppet-environment-with-vagrant/" title="Previous Post: Using Oscar to Build a Local Puppet Environment with Vagrant">&laquo; Using Oscar to Build a Local Puppet Environment with Vagrant</a></li>
             
-            
-            <li class="next"><a href="/vpn-setup-openvpn-server-deploy-on-aws/" title="Next Post: VPN Setup - OpenVPN Server Deploy on AWS">VPN Setup - OpenVPN Server Deploy on AWS &raquo;</a></li>
             
           </ul>
         
@@ -219,7 +310,7 @@
   
   <div id="recent_posts" class="list-group">
     
-    <a class="list-group-item " href="/dogecoin-mining-on-digital-ocean/">Dogecoin Mining on Digital Ocean</a>
+    <a class="list-group-item active" href="/dogecoin-mining-on-digital-ocean/">Dogecoin Mining on Digital Ocean</a>
     
     <a class="list-group-item " href="/using-oscar-to-build-a-local-puppet-environment-with-vagrant/">Using Oscar to Build a Local Puppet Environment With Vagrant</a>
     

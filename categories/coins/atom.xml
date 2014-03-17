@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: coins | Sandors Systems Scribbles]]></title>
+  <link href="http://e30chris.github.io/categories/coins/atom.xml" rel="self"/>
+  <link href="http://e30chris.github.io/"/>
+  <updated>2014-03-16T23:08:43-07:00</updated>
+  <id>http://e30chris.github.io/</id>
+  <author>
+    <name><![CDATA[chris]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Dogecoin mining on Digital Ocean]]></title>
+    <link href="http://e30chris.github.io/dogecoin-mining-on-digital-ocean/"/>
+    <updated>2014-03-12T15:41:00-07:00</updated>
+    <id>http://e30chris.github.io/dogecoin-mining-on-digital-ocean</id>
+    <content type="html"><![CDATA[<h1>The Goal</h1>
+
+<p>Create a droplet on Digital Ocean to mine Dogecoins so fun much profits.</p>
+
+<!-- more -->
+
+
+<h1>The Links</h1>
+
+<ul>
+<li>Dogecoin &ndash; <a href="http://dogecoin.com/">very link</a></li>
+<li>/r/dogecoin &ndash; <a href="http://www.reddit.com/r/dogecoin">so reddit</a></li>
+<li>/r/dogemining &ndash; <a href="http://www.reddit.com/r/dogemining">many mines</a></li>
+<li>Dogecoin Mining Pools &ndash; <a href="http://www.doktorrf.com/dogecoin/pools.html">much swim</a></li>
+<li>Dogecoin Resources &ndash; <a href="https://github.com/ummjackson/dogecoin-resources">sources</a></li>
+<li>Dogecoin Foundation &ndash; <a href="http://foundation.dogecoin.com/">now found</a></li>
+<li>Digital Ocean &ndash; <a href="https://www.digitalocean.com">awesome drops</a></li>
+<li>TugBoat &ndash; <a href="https://www.digitalocean.com/community/articles/how-to-use-tugboat-to-manage-digitalocean-droplets-from-a-terminal">command line ocean</a></li>
+</ul>
+
+
+<h1>Create a droplet</h1>
+
+<p><code>
+sandor@argo&gt; tugboat create lucydoge -s 62 -i 308287 -r 3 -k 44888
+</code></p>
+
+<p>```
+Name:             lucydoge
+Status:           active
+Region ID:        3
+Image ID:         308287
+Size ID:          62
+Backups Active:   false</p>
+
+<p>```</p>
+
+<h2>Create user</h2>
+
+<p><code>
+root@lucydoge:~# history
+root@lucydoge:~# ls -al
+root@lucydoge:~# useradd -m lucy
+root@lucydoge:~# passwd lucy
+root@lucydoge:~# adduser lucy sudo
+</code></p>
+
+<h2>Update Debian</h2>
+
+<p><code>
+root@lucydoge:~# apt-get -y update &amp;&amp; apt-get -y upgrade
+</code></p>
+
+<h2>Install Screen</h2>
+
+<p><code>
+root@lucydoge:~# apt-get install screen
+</code></p>
+
+<h1>Install a CPU Miner</h1>
+
+<p><code>
+root@lucydoge:~# sudo apt-get install git build-essential autotools-dev libcurl4-gnutls-dev autoconf automake
+</code></p>
+
+<p><code>
+lucy@lucydoge:~# mkdir ~/miner2049er
+</code></p>
+
+<p><code>
+lucy@lucydoge:~# cd miner2049er
+lucy@lucydoge:~# git clone https://github.com/pooler/cpuminer.git
+lucy@lucydoge:~# cd cpuminer
+lucy@lucydoge:~# ./autogen.sh
+lucy@lucydoge:~# CFLAGS="-O3 -Wall -msse2" ./configure
+lucy@lucydoge:~# make
+</code></p>
+
+<h1>Find a Mining Pool</h1>
+
+<p><a href="http://www.doktorrf.com/dogecoin/pools.html">Mining Pools</a></p>
+
+<ul>
+<li>Create a new address for mining deposits</li>
+<li>Add that mining address to your pool profile</li>
+</ul>
+
+
+<h1>Start mining</h1>
+
+<p><code>
+lucy@lucydoge:~# ./minerd --url stratum+tcp://server:port --userpass worker.name:password
+</code></p>
+
+<p>enjoy much coins</p>
+]]></content>
+  </entry>
+  
+</feed>
