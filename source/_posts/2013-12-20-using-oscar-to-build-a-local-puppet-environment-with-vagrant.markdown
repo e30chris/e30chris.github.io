@@ -3,7 +3,7 @@ layout: post
 title: "Using Oscar to Build a Local Puppet Environment with Vagrant"
 date: 2013-12-20 11:22
 comments: true
-categories: vagrant
+categories: [vagrant]
 ---
 
 ## The Goal

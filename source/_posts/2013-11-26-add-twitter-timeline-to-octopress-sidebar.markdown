@@ -3,7 +3,7 @@ layout: post
 title: "Add Twitter Timeline to OctoPress Sidebar"
 date: 2013-11-26 17:20
 comments: false
-categories: webstuff
+categories: [webstuff]
 ---
 
 ## The Goal

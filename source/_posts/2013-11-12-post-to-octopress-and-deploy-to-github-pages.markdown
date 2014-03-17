@@ -3,7 +3,7 @@ layout: post
 title: "post to octopress and deploy to github pages"
 date: 2013-11-12 21:06
 comments: false
-categories: 
+categories: [webstuff] 
 ---
 
 ## The Goal

@@ -3,7 +3,7 @@ layout: post
 title: "Add Twitter Bootstrap 3 to OctoPress with OctoStrap3"
 date: 2013-11-26 16:41
 comments: false
-categories: webstuff
+categories: [webstuff]
 ---
 
 ## The Goal

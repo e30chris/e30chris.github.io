@@ -3,7 +3,7 @@ layout: post
 title: "VPN Setup - OpenVPN Server Deploy on AWS"
 date: 2013-12-10 15:36
 comments: true
-categories: webstuff
+categories: [webstuff]
 ---
 
 ## The Goal

@@ -3,7 +3,7 @@ layout: post
 title: "Add WebProxy Cert to Fedora"
 date: 2013-11-29 15:19
 comments: true
-categories: webstuff
+categories: [webstuff]
 ---
 
 ## The Goal
