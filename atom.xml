@@ -4,7 +4,7 @@
   <title><![CDATA[Sandors Systems Scribbles]]></title>
   <link href="http://e30chris.github.io/atom.xml" rel="self"/>
   <link href="http://e30chris.github.io/"/>
-  <updated>2014-04-02T13:12:01-07:00</updated>
+  <updated>2014-04-02T13:15:41-07:00</updated>
   <id>http://e30chris.github.io/</id>
   <author>
     <name><![CDATA[chris]]></name>
@@ -49,6 +49,12 @@
 <p>Create the GoAccess Playbook.  This installs GoAccess using Apt on Debian.</p>
 
 <script src="https://gist.github.com/e30chris/9929303.js"></script>
+
+
+<p>Run the playbook with Ansible.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sandor@pineapplez:$ ansible-playbook ~/playbooks/goaccess/goaccess.yml -vvvv</span></code></pre></td></tr></table></div></figure>
 
 
 <h1>GoAccess Usage</h1>
