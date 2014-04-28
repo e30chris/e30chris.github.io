@@ -10,7 +10,7 @@ categories: [coins]
 
 Create a droplet on Digital Ocean to mine Dogecoins so fun much profits.
 
-{% img http://dogecoin.com/img/dogecoin-300.png %}
+{% img https://dl.dropboxusercontent.com/u/6735750/dogecoinsuchlogo.png %}
 
 <!-- more -->
 

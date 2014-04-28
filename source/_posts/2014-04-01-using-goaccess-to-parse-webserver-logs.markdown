@@ -12,11 +12,11 @@ Need the ability to track web traffic for a specific hours worth of logs.
 
 # The Solution
 
-Create a solution that is reusable and easy to consume.  As always, Simple triumphs!
+Using GoAccess to parse Apache logs that are rotated into hour chunks.  
 
 # The Goal
 
-Install GoAccess to parse webserver logs.  Use Ansible Playbooks for the installation and configuration for reusability.  Keep it simple by rotating logs on the hour.
+Install GoAccess to parse webserver logs.  Use Ansible Playbooks for the installation, configuration and for re-usabilty of GoAccess on other servers.  Keep it simple by rotating logs on the hour.
 
 <!-- more -->
 
@@ -36,6 +36,13 @@ Create the GoAccess Playbook.  This installs GoAccess using Apt on Debian.
 
 
 <script src="https://gist.github.com/e30chris/9929303.js"></script>
+
+
+Run the playbook with Ansible.
+
+```
+sandor@pineapplez:$ ansible-playbook ~/playbooks/goaccess/goaccess.yml -vvvv
+```
 
 
 # GoAccess Usage
