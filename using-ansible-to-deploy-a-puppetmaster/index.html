@@ -4,7 +4,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Auto Update VirtualBox Guest Additions with vagrant-vbguest - Sandors Systems Scribbles</title>
+  <title>Using Ansible to deploy a PuppetMaster - Sandors Systems Scribbles</title>
   <meta name="author" content="chris">
 
   
@@ -16,7 +16,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://e30chris.github.io/auto-update-virtualbox-guest-additions-with-vagrant-vbguest">
+  <link rel="canonical" href="http://e30chris.github.io/using-ansible-to-deploy-a-puppetmaster">
   <link href="/favicon.png" type="image/png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="Sandors Systems Scribbles" type="application/atom+xml">
 
@@ -110,56 +110,214 @@
 
 
 
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-11-12T21:01:00-08:00" pubdate data-updated="true">Nov 12<span>th</span>, 2013</time>
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-06-13T10:58:00-07:00" pubdate data-updated="true">Jun 13<span>th</span>, 2014</time>
         
       </p>
     
     
     <h1 class="entry-title">
-        Auto Update VirtualBox Guest Additions With Vagrant-vbguest
+        Using Ansible to Deploy a PuppetMaster
         
     </h1>
     
   </header>
 
 
-<div class="entry-content clearfix"><h2>The Goal</h2>
+<div class="entry-content clearfix"><h1>The Problem</h1>
 
-<ul>
-<li>Keep the VirtualBox guest additions at the latest version using vagrant-vbguest built by dotless-de.</li>
-</ul>
+<p>Need to deploy a new Puppet Enterprise cluster with a PuppetMaster, PuppetConsole and a PuppetDB while avoiding typos and misconfigurations.  Also need to deploy to several environments using a consistent configuration.</p>
 
+<h1>The Solution</h1>
+
+<p>Use Ansible to deploy Puppet onto freshly built servers that contain just a SysAdmins SSH public key.</p>
+
+<h1>The Goal</h1>
+
+<p>A repeatable and documented way to deploy the very finicky Puppet installer in any environment needed from local vagrants to the clouds of vSphere, AWS, RackSpace or Digital Ocean.</p>
 
 <!-- more -->
 
 
-<h2>The Links</h2>
+<h1>GitHub Repo</h1>
 
-<ul>
-<li><p>Vagrant &ndash; <a href="http://www.vagrantup.com/">link</a></p></li>
-<li><p>Vagrant vbguest &ndash; <a href="https://github.com/dotless-de/vagrant-vbguest">link</a></p></li>
-<li><p>dotless-de &ndash; <a href="https://github.com/dotless-de">link</a></p></li>
-</ul>
+<p><a href="https://github.com/e30chris/Ansible-PuppetEnterpriseDeploy">github.com/e30chris/Ansible-PuppetEnterpriseDeploy</a></p>
 
+<hr />
 
-<h2>vagrant-vbguest</h2>
+<h1>Playbook notes</h1>
 
-<p>A beautifully simple Vagrant plugin to manage the guest additions on VirtualBox.</p>
-
-<h2>install</h2>
+<h2>Setting the variables for each environment</h2>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>spudBud@pineApplez&gt; ~/Codestuff/vagrants/PuppetMaster $vagrant plugin install vagrant-vbguest</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sandor@pineapplez:$ cd ~/Ansible-PuppetEnterpriseDeploy/
+</span><span class='line'>sandor@pineapplez:$ cat group_vars/all
+</span><span class='line'>---
+</span><span class='line'># common variables for PuppetMaster Deployment
+</span><span class='line'># format for this file
+</span><span class='line'># variable: fact
+</span><span class='line'>#
+</span><span class='line'># version of Puppet Enterprise
+</span><span class='line'>pe_version: 3.2.3
+</span><span class='line'>
+</span><span class='line'># os family
+</span><span class='line'>os_family: debian
+</span><span class='line'>os_version: 7
+</span><span class='line'>os_arch: amd64
+</span><span class='line'>
+</span><span class='line'># pe installer
+</span><span class='line'>pe_installer: puppet-enterprise-""-""-""-""
+</span><span class='line'>
+</span><span class='line'># hostnames
+</span><span class='line'>pupmaster_hostname: pupmaster.local
+</span><span class='line'>pupdb_hostname: pupdb.local
+</span><span class='line'>pupconsole_hostname: pupconsole.local
+</span><span class='line'>
+</span><span class='line'># IP's
+</span><span class='line'>pupmaster_ip: 10.0.0.10
+</span><span class='line'>pupdb_ip: 10.0.0.11
+</span><span class='line'>pupconsole_ip: 10.0.0.12
+</span><span class='line'>
+</span><span class='line'># dns salt hostnames
+</span><span class='line'>pupmaster_salt_hostnames: puppet,puppetmaster
+</span><span class='line'>pupdb_salt_hostnames: puppetdb
+</span><span class='line'>pupconsole_salt_hostname: pupconsole
+</span><span class='line'>
+</span><span class='line'># passwords
+</span><span class='line'>console_auth_db_pass: arandompasswordthatneedschangedhere
+</span><span class='line'>console_db_pass: arandompasswordthatneedschangedhere
+</span><span class='line'>pupdb_db_pass: arandompasswordthatneedschangedhere
+</span><span class='line'>db_root_pass: arandompasswordthatneedschangedhere
+</span></code></pre></td></tr></table></div></figure>
 
 
-<h2>bootup usage</h2>
+<p>To keep it simple only the values that should be changed are assigned variables.  Everything else is left with the Puppet defaults in the answer files.</p>
 
-<p>vagrant-vbguest will run on every <code>vagrant up</code> or on a <code>vagrant reload</code> unless you specifically tell it not to.</p>
+<hr />
 
-<h2>running VM usage</h2>
+<h1>Tasks to be run on all servers</h1>
+
+<p>Puppet needs very perfect name resolution between all agents and the PuppetMaster.  Having a <strong>perfect</strong> hosts file on each server is required.</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>spudBud@pineApplez&gt; vagrant vbguest --status</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>- name: Ensure common etc hosts file
+</span><span class='line'>  template:
+</span><span class='line'>    src="../templates/hosts.j2"
+</span><span class='line'>    dest=/etc/hosts</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To keep things simple all the installation tasks will run out of a /puppetinstall directory.  This should be in the user home dir that is running the installer.  The examples here use root but the SysAdmin Bible states never use root always use <strong>sudo</strong>.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>- name: Ensure Puppet installer directory present
+</span><span class='line'>  file:
+</span><span class='line'>    path=/root/puppetinstall
+</span><span class='line'>    state=directory
+</span><span class='line'>
+</span><span class='line'>- name: Ensure install log present
+</span><span class='line'>  file:
+</span><span class='line'>    path=/root/puppetinstall/pupconsole_install.log
+</span><span class='line'>    owner=root
+</span><span class='line'>    state=touch</span></code></pre></td></tr></table></div></figure>
+
+
+<p>When you download the PE tarball you can grab the download url from S3.  This grabs the version you need and extracts it into the installer dir.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>- name: Ensure PE tarball present
+</span><span class='line'>  get_url:
+</span><span class='line'>    url=https://s3.amazonaws.com/pe-builds/released/""/"".tar.gz
+</span><span class='line'>    dest=/root/"".tar.gz
+</span><span class='line'>    force=no
+</span><span class='line'>
+</span><span class='line'>- name: Ensure Puppet untar'd to install directory
+</span><span class='line'>  unarchive: 
+</span><span class='line'>    copy=no
+</span><span class='line'>    src=/root/"".tar.gz
+</span><span class='line'>    dest=/root/puppetinstall</span></code></pre></td></tr></table></div></figure>
+
+
+<hr />
+
+<h1>Tasks that run on each server role</h1>
+
+<p>Each server then runs the same basic installer command with a few things named for each role like the installer log.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>- name: answer file for PupMaster
+</span><span class='line'>  template:
+</span><span class='line'>    src="../templates/pupmaster.answer.j2"
+</span><span class='line'>    dest=/root/puppetinstall/""/answers/pupmaster.answer
+</span><span class='line'>
+</span><span class='line'>- name: run the pe installer
+</span><span class='line'>  command: /root/puppetinstall/""/puppet-enterprise-installer -a /root/puppetinstall/""/answers/pupmaster.answer | tee /root/puppetinstall/pupmaster_install.log
+</span></code></pre></td></tr></table></div></figure>
+
+
 
 </div>
 
@@ -184,13 +342,13 @@
 
 
 
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-11-12T21:01:00-08:00" pubdate data-updated="true">Nov 12<span>th</span>, 2013</time>
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-06-13T10:58:00-07:00" pubdate data-updated="true">Jun 13<span>th</span>, 2014</time>
           
 
 <span class="glyphicon glyphicon-tags"></span>&nbsp;
 <span class="categories">
   
-    <a class='category' href='/categories/vagrant/'>vagrant</a>
+    <a class='category' href='/categories/ansible/'>ansible</a>
   
 </span>
 
@@ -199,7 +357,7 @@
         
           <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://e30chris.github.io/auto-update-virtualbox-guest-additions-with-vagrant-vbguest/" data-via="e30chris" data-counturl="http://e30chris.github.io/auto-update-virtualbox-guest-additions-with-vagrant-vbguest/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://e30chris.github.io/using-ansible-to-deploy-a-puppetmaster/" data-via="e30chris" data-counturl="http://e30chris.github.io/using-ansible-to-deploy-a-puppetmaster/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -213,10 +371,8 @@
         
           <ul class="meta text-muted pager">
             
-            <li class="previous"><a href="/vanilla-vagrant-setup/" title="Previous Post: vanilla vagrant setup">&laquo; vanilla vagrant setup</a></li>
+            <li class="previous"><a href="/using-goaccess-to-parse-webserver-logs/" title="Previous Post: Using GoAccess to parse webserver logs">&laquo; Using GoAccess to parse webserver logs</a></li>
             
-            
-            <li class="next"><a href="/puppet-vim-setup/" title="Next Post: puppet vim setup">puppet vim setup &raquo;</a></li>
             
           </ul>
         
@@ -235,7 +391,7 @@
   
   <div id="recent_posts" class="list-group">
     
-    <a class="list-group-item " href="/using-ansible-to-deploy-a-puppetmaster/">Using Ansible to Deploy a PuppetMaster</a>
+    <a class="list-group-item active" href="/using-ansible-to-deploy-a-puppetmaster/">Using Ansible to Deploy a PuppetMaster</a>
     
     <a class="list-group-item " href="/using-goaccess-to-parse-webserver-logs/">Using GoAccess to Parse Webserver Logs</a>
     
