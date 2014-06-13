@@ -4,7 +4,7 @@
   <title><![CDATA[Category: puppet | Sandors Systems Scribbles]]></title>
   <link href="http://e30chris.github.io/categories/puppet/atom.xml" rel="self"/>
   <link href="http://e30chris.github.io/"/>
-  <updated>2014-06-13T15:39:11-07:00</updated>
+  <updated>2014-06-13T15:41:57-07:00</updated>
   <id>http://e30chris.github.io/</id>
   <author>
     <name><![CDATA[chris]]></name>
@@ -12,6 +12,173 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Using Ansible to deploy a PuppetMaster]]></title>
+    <link href="http://e30chris.github.io/using-ansible-to-deploy-a-puppetmaster/"/>
+    <updated>2014-06-13T10:58:00-07:00</updated>
+    <id>http://e30chris.github.io/using-ansible-to-deploy-a-puppetmaster</id>
+    <content type="html"><![CDATA[<h1>The Problem</h1>
+
+<p>Need to deploy a new Puppet Enterprise cluster with a PuppetMaster, PuppetConsole and a PuppetDB while avoiding typos and misconfigurations.  Also need to deploy to several environments using a consistent configuration.</p>
+
+<h1>The Solution</h1>
+
+<p>Use Ansible to deploy Puppet onto freshly built servers that contain just a SysAdmins SSH public key.</p>
+
+<h1>The Goal</h1>
+
+<p>A repeatable and documented way to deploy the very finicky Puppet installer in any environment needed from local vagrants to the clouds of vSphere, AWS, RackSpace or Digital Ocean.</p>
+
+<!-- more -->
+
+
+<h1>GitHub Repo</h1>
+
+<p><a href="https://github.com/e30chris/Ansible-PuppetEnterpriseDeploy">github.com/e30chris/Ansible-PuppetEnterpriseDeploy</a></p>
+
+<hr />
+
+<h1>Playbook notes</h1>
+
+<h2>Setting the variables for each environment</h2>
+
+<p>```
+sandor@pineapplez:$ cd ~/Ansible-PuppetEnterpriseDeploy/</p>
+
+<h2>sandor@pineapplez:$ cat group_vars/all</h2>
+
+<h1>common variables for PuppetMaster Deployment</h1>
+
+<h1>format for this file</h1>
+
+<h1>variable: fact</h1>
+
+<p>#</p>
+
+<h1>version of Puppet Enterprise</h1>
+
+<p>pe_version: 3.2.3</p>
+
+<h1>os family</h1>
+
+<p>os_family: debian
+os_version: 7
+os_arch: amd64</p>
+
+<h1>pe installer</h1>
+
+<p>pe_installer: puppet-enterprise-&ldquo;&rdquo;&ndash;&ldquo;&rdquo;&ndash;&ldquo;&rdquo;&ndash;&ldquo;&rdquo;</p>
+
+<h1>hostnames</h1>
+
+<p>pupmaster_hostname: pupmaster.local
+pupdb_hostname: pupdb.local
+pupconsole_hostname: pupconsole.local</p>
+
+<h1>IP&rsquo;s</h1>
+
+<p>pupmaster_ip: 10.0.0.10
+pupdb_ip: 10.0.0.11
+pupconsole_ip: 10.0.0.12</p>
+
+<h1>dns salt hostnames</h1>
+
+<p>pupmaster_salt_hostnames: puppet,puppetmaster
+pupdb_salt_hostnames: puppetdb
+pupconsole_salt_hostname: pupconsole</p>
+
+<h1>passwords</h1>
+
+<p>console_auth_db_pass: arandompasswordthatneedschangedhere
+console_db_pass: arandompasswordthatneedschangedhere
+pupdb_db_pass: arandompasswordthatneedschangedhere
+db_root_pass: arandompasswordthatneedschangedhere</p>
+
+<p>```</p>
+
+<p>To keep it simple only the values that should be changed are assigned variables.  Everything else is left with the Puppet defaults in the answer files.</p>
+
+<hr />
+
+<h1>Tasks to be run on all servers</h1>
+
+<p>Puppet needs very perfect name resolution between all agents and the PuppetMaster.  Having a <strong>perfect</strong> hosts file on each server is required.</p>
+
+<p>```
+&ndash; name: Ensure common etc hosts file
+  template:</p>
+
+<pre><code>src="../templates/hosts.j2"
+dest=/etc/hosts
+</code></pre>
+
+<p>```</p>
+
+<p>To keep things simple all the installation tasks will run out of a /puppetinstall directory.  This should be in the user home dir that is running the installer.  The examples here use root but the SysAdmin Bible states never use root always use <strong>sudo</strong>.</p>
+
+<p>```
+&ndash; name: Ensure Puppet installer directory present
+  file:</p>
+
+<pre><code>path=/root/puppetinstall
+state=directory
+</code></pre>
+
+<ul>
+<li>name: Ensure install log present
+file:
+  path=/root/puppetinstall/pupconsole_install.log
+  owner=root
+  state=touch
+```</li>
+</ul>
+
+
+<p>When you download the PE tarball you can grab the download url from S3.  This grabs the version you need and extracts it into the installer dir.</p>
+
+<p>```
+&ndash; name: Ensure PE tarball present
+  get_url:</p>
+
+<pre><code>url=https://s3.amazonaws.com/pe-builds/released/""/"".tar.gz
+dest=/root/"".tar.gz
+force=no
+</code></pre>
+
+<ul>
+<li>name: Ensure Puppet untar&rsquo;d to install directory
+unarchive:
+  copy=no
+  src=/root/&ldquo;&rdquo;.tar.gz
+  dest=/root/puppetinstall
+```</li>
+</ul>
+
+
+<hr />
+
+<h1>Tasks that run on each server role</h1>
+
+<p>Each server then runs the same basic installer command with a few things named for each role like the installer log.</p>
+
+<p>```
+&ndash; name: answer file for PupMaster
+  template:</p>
+
+<pre><code>src="../templates/pupmaster.answer.j2"
+dest=/root/puppetinstall/""/answers/pupmaster.answer
+</code></pre>
+
+<ul>
+<li>name: run the pe installer
+command: /root/puppetinstall/&ldquo;&rdquo;/puppet-enterprise-installer -a /root/puppetinstall/&ldquo;&rdquo;/answers/pupmaster.answer | tee /root/puppetinstall/pupmaster_install.log</li>
+</ul>
+
+
+<p>```</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[puppet vim setup]]></title>
