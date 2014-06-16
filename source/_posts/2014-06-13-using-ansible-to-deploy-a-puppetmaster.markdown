@@ -6,23 +6,24 @@ comments: false
 categories: [ansible,puppet]
 ---
 
-# The Problem
+## The Problem
 Need to deploy a new Puppet Enterprise cluster with a PuppetMaster, PuppetConsole and a PuppetDB while avoiding typos and misconfigurations.  Also need to deploy to several environments using a consistent configuration.
 
-# The Solution
+## The Solution
 Use Ansible to deploy Puppet onto freshly built servers that contain just a SysAdmins SSH public key.
 
-# The Goal
+## The Goal
 A repeatable and documented way to deploy the very finicky Puppet installer in any environment needed from local vagrants to the clouds of vSphere, AWS, RackSpace or Digital Ocean.
 
 <!-- more -->
+---
 
-# GitHub Repo
+## GitHub Repo
 [github.com/e30chris/Ansible-PuppetEnterpriseDeploy](https://github.com/e30chris/Ansible-PuppetEnterpriseDeploy)
 
 
 ---
-# Playbook notes
+## Playbook notes
 
 ## Setting the variables for each environment
 
@@ -72,7 +73,7 @@ To keep it simple only the values that should be changed are assigned variables.
 
 ---
 
-# Tasks to be run on all servers
+## Tasks to be run on all servers
 
 Puppet needs very perfect name resolution between all agents and the PuppetMaster.  Having a **perfect** hosts file on each server is required.
 
@@ -116,7 +117,7 @@ When you download the PE tarball you can grab the download url from S3.  This gr
 ```
 ---
 
-# Tasks that run on each server role
+## Tasks that run on each server role
 
 Each server then runs the same basic installer command with a few things named for each role like the installer log.
 
