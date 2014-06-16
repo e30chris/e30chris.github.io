@@ -123,28 +123,30 @@
   </header>
 
 
-<div class="entry-content clearfix"><h1>The Problem</h1>
+<div class="entry-content clearfix"><h2>The Problem</h2>
 
 <p>Need to deploy a new Puppet Enterprise cluster with a PuppetMaster, PuppetConsole and a PuppetDB while avoiding typos and misconfigurations.  Also need to deploy to several environments using a consistent configuration.</p>
 
-<h1>The Solution</h1>
+<h2>The Solution</h2>
 
 <p>Use Ansible to deploy Puppet onto freshly built servers that contain just a SysAdmins SSH public key.</p>
 
-<h1>The Goal</h1>
+<h2>The Goal</h2>
 
 <p>A repeatable and documented way to deploy the very finicky Puppet installer in any environment needed from local vagrants to the clouds of vSphere, AWS, RackSpace or Digital Ocean.</p>
 
 <!-- more -->
 
 
-<h1>GitHub Repo</h1>
+<hr />
+
+<h2>GitHub Repo</h2>
 
 <p><a href="https://github.com/e30chris/Ansible-PuppetEnterpriseDeploy">github.com/e30chris/Ansible-PuppetEnterpriseDeploy</a></p>
 
 <hr />
 
-<h1>Playbook notes</h1>
+<h2>Playbook notes</h2>
 
 <h2>Setting the variables for each environment</h2>
 
@@ -231,7 +233,7 @@
 
 <hr />
 
-<h1>Tasks to be run on all servers</h1>
+<h2>Tasks to be run on all servers</h2>
 
 <p>Puppet needs very perfect name resolution between all agents and the PuppetMaster.  Having a <strong>perfect</strong> hosts file on each server is required.</p>
 
@@ -297,7 +299,7 @@
 
 <hr />
 
-<h1>Tasks that run on each server role</h1>
+<h2>Tasks that run on each server role</h2>
 
 <p>Each server then runs the same basic installer command with a few things named for each role like the installer log.</p>
 
