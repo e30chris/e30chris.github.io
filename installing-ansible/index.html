@@ -4,7 +4,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Sandors Systems Scribbles</title>
+  <title>Installing Ansible - Sandors Systems Scribbles</title>
   <meta name="author" content="chris">
 
   
@@ -16,7 +16,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://e30chris.github.io">
+  <link rel="canonical" href="http://e30chris.github.io/installing-ansible">
   <link href="/favicon.png" type="image/png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="Sandors Systems Scribbles" type="application/atom+xml">
 
@@ -92,12 +92,8 @@
         <div id="content">
           <div class="row">
   <div class="page-content col-md-9">
-    <div class="blog-index">
+    <article class="hentry" role="article">
       
-      
-      
-        <article class="post">
-          
   <header class="page-header">
     
       <p class="meta text-muted text-uppercase">
@@ -119,12 +115,15 @@
       </p>
     
     
-      <h1 class="entry-title"><a href="/installing-ansible/">Installing Ansible</a></h1>
+    <h1 class="entry-title">
+        Installing Ansible
+        
+    </h1>
     
   </header>
 
 
-  <div class="entry-content clearfix"><h2>The Problem</h2>
+<div class="entry-content clearfix"><h2>The Problem</h2>
 
 <p>Need to deploy an Ansible Controller to run Playbooks from that uses the latest build and is easy to upgrade/configure.</p>
 
@@ -136,76 +135,47 @@
 
 <p>Create an Ansible Controller directory that will run the latest version via git clone and setup the shell with the Ansible environment scripts.</p>
 
+<!-- more -->
+
+
+<hr />
+
+<h2>Clone the Ansible repo</h2>
+
+<p>Go to the GitHub project page <a href="https://github.com/ansible/ansible">github/ansible</a></p>
+
+<p>Choose a release version or the dev branch and clone.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sandor@pineapplez:$ mkdir ~/Codestuff/AnsibleController &lt;-- Ansible runs from here
+</span><span class='line'>sandor@pineapplez:$ mkdir ~/Codestuff/ansibles &lt;-- Playbooks go here
+</span><span class='line'>sandor@pineapplez:$ cd ~/Codestuff/AnsibleController
+</span><span class='line'>sandor@pineapplez:$ git@github.com:ansible/ansible.git</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Run the environment script</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sandor@pineapplez:$ ./hacking/env-setup</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To upgrade Ansible just go back into the AnsibleController directory and use git to get the latest.</p>
+
+<p>You are now setup to run Ansible from the Controller.  Push some SSH public keys and start pushing playbooks!</p>
 </div>
-  
-  
-    <footer>
-      <a class="btn btn-default" rel="full-article" href="/installing-ansible/">Read on &rarr;</a>
-    </footer>
-  
 
 
-        </article>
-      
-      
-        <article class="post">
+      <footer>
+        <p class="meta text-muted">
           
-  <header class="page-header">
-    
-      <p class="meta text-muted text-uppercase">
-        
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-06-13T10:58:00-07:00" pubdate data-updated="true">Jun 13<span>th</span>, 2014</time>
-        
-      </p>
-    
-    
-      <h1 class="entry-title"><a href="/using-ansible-to-deploy-a-puppetmaster/">Using Ansible to Deploy a PuppetMaster</a></h1>
-    
-  </header>
-
-
-  <div class="entry-content clearfix"><h1>The Problem</h1>
-
-<p>Need to deploy a new Puppet Enterprise cluster with a PuppetMaster, PuppetConsole and a PuppetDB while avoiding typos and misconfigurations.  Also need to deploy to several environments using a consistent configuration.</p>
-
-<h1>The Solution</h1>
-
-<p>Use Ansible to deploy Puppet onto freshly built servers that contain just a SysAdmins SSH public key.</p>
-
-<h1>The Goal</h1>
-
-<p>A repeatable and documented way to deploy the very finicky Puppet installer in any environment needed from local vagrants to the clouds of vSphere, AWS, RackSpace or Digital Ocean.</p>
-
-</div>
-  
-  
-    <footer>
-      <a class="btn btn-default" rel="full-article" href="/using-ansible-to-deploy-a-puppetmaster/">Read on &rarr;</a>
-    </footer>
   
 
+<span class="glyphicon glyphicon-user"></span> <span class="byline author vcard">Posted by <span class="fn">chris</span></span>
 
-        </article>
-      
-      
-        <article class="post">
           
-  <header class="page-header">
-    
-      <p class="meta text-muted text-uppercase">
-        
 
 
 
@@ -218,396 +188,56 @@
 
 
 
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-04-01T23:54:00-07:00" pubdate data-updated="true">Apr 1<span>st</span>, 2014</time>
-        
-      </p>
-    
-    
-      <h1 class="entry-title"><a href="/using-goaccess-to-parse-webserver-logs/">Using GoAccess to Parse Webserver Logs</a></h1>
-    
-  </header>
-
-
-  <div class="entry-content clearfix"><h1>The Problem</h1>
-
-<p>Need the ability to track web traffic for a specific hours worth of logs.</p>
-
-<h1>The Solution</h1>
-
-<p>Using GoAccess to parse Apache logs that are rotated into hour chunks.</p>
-
-<h1>The Goal</h1>
-
-<p>Install GoAccess to parse webserver logs.  Use Ansible Playbooks for the installation, configuration and for re-usabilty of GoAccess on other servers.  Keep it simple by rotating logs on the hour.</p>
-
-</div>
-  
-  
-    <footer>
-      <a class="btn btn-default" rel="full-article" href="/using-goaccess-to-parse-webserver-logs/">Read on &rarr;</a>
-    </footer>
-  
-
-
-        </article>
-      
-      
-        <article class="post">
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-06-16T13:15:00-07:00" pubdate data-updated="true">Jun 16<span>th</span>, 2014</time>
           
-  <header class="page-header">
-    
-      <p class="meta text-muted text-uppercase">
+
+<span class="glyphicon glyphicon-tags"></span>&nbsp;
+<span class="categories">
+  
+    <a class='category' href='/categories/ansible/'>ansible</a>
+  
+</span>
+
+
+        </p>
         
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-03-12T15:41:00-07:00" pubdate data-updated="true">Mar 12<span>th</span>, 2014</time>
-        
-      </p>
-    
-    
-      <h1 class="entry-title"><a href="/dogecoin-mining-on-digital-ocean/">Dogecoin Mining on Digital Ocean</a></h1>
-    
-  </header>
-
-
-  <div class="entry-content clearfix"><h1>The Goal</h1>
-
-<p>Create a droplet on Digital Ocean to mine Dogecoins so fun much profits.</p>
-
-<p><img src="https://dl.dropboxusercontent.com/u/6735750/dogecoinsuchlogo.png"></p>
-
+          <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://e30chris.github.io/installing-ansible/" data-via="e30chris" data-counturl="http://e30chris.github.io/installing-ansible/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
 </div>
-  
-  
-    <footer>
-      <a class="btn btn-default" rel="full-article" href="/dogecoin-mining-on-digital-ocean/">Read on &rarr;</a>
-    </footer>
-  
 
-
-        </article>
-      
-      
-        <article class="post">
-          
-  <header class="page-header">
-    
-      <p class="meta text-muted text-uppercase">
         
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-12-20T11:22:00-08:00" pubdate data-updated="true">Dec 20<span>th</span>, 2013</time>
         
-      </p>
-    
-    
-      <h1 class="entry-title"><a href="/using-oscar-to-build-a-local-puppet-environment-with-vagrant/">Using Oscar to Build a Local Puppet Environment With Vagrant</a></h1>
-    
-  </header>
-
-
-  <div class="entry-content clearfix"><h2>The Goal</h2>
-
-<ul>
-<li>Install Oscar</li>
-<li>Use Oscar to build a local PuppetMaster &amp; Agent config</li>
-<li>Use Vagrant to start the PuppetMaster &amp; Agent</li>
-</ul>
-
-
-</div>
-  
-  
-    <footer>
-      <a class="btn btn-default" rel="full-article" href="/using-oscar-to-build-a-local-puppet-environment-with-vagrant/">Read on &rarr;</a>
-    </footer>
-  
-
-
-        </article>
-      
-      
-        <article class="post">
-          
-  <header class="page-header">
-    
-      <p class="meta text-muted text-uppercase">
+          <ul class="meta text-muted pager">
+            
+            <li class="previous"><a href="/using-ansible-to-deploy-a-puppetmaster/" title="Previous Post: Using Ansible to deploy a PuppetMaster">&laquo; Using Ansible to deploy a PuppetMaster</a></li>
+            
+            
+          </ul>
         
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-12-17T12:10:00-08:00" pubdate data-updated="true">Dec 17<span>th</span>, 2013</time>
-        
-      </p>
+      </footer>
+    </article>
     
-    
-      <h1 class="entry-title"><a href="/using-vagrant-on-windows/">Using Vagrant on Windows</a></h1>
-    
-  </header>
-
-
-  <div class="entry-content clearfix"><h2>The Goal</h2>
-
-<ul>
-<li>Install and configure VirtualBox &amp; Vagrant on your Windows dev box</li>
-<li>Download and start a Linux &amp; Windows Vagrant Box.</li>
-</ul>
-
-
-</div>
-  
-  
-    <footer>
-      <a class="btn btn-default" rel="full-article" href="/using-vagrant-on-windows/">Read on &rarr;</a>
-    </footer>
-  
-
-
-        </article>
-      
-      
-        <article class="post">
-          
-  <header class="page-header">
-    
-      <p class="meta text-muted text-uppercase">
-        
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-12-10T16:13:00-08:00" pubdate data-updated="true">Dec 10<span>th</span>, 2013</time>
-        
-      </p>
-    
-    
-      <h1 class="entry-title"><a href="/vpn-setup-macbook-to-openvpn-server-using-tunnelblick/">VPN Setup - MacBook to OpenVPN Server Using Tunnelblick</a></h1>
-    
-  </header>
-
-
-  <div class="entry-content clearfix"><h2>The Goal</h2>
-
-<ul>
-<li>Get MacBook to connect to a OpenVPN Server</li>
-<li>Install Tunnelblick to make that happen</li>
-</ul>
-
-
-</div>
-  
-  
-    <footer>
-      <a class="btn btn-default" rel="full-article" href="/vpn-setup-macbook-to-openvpn-server-using-tunnelblick/">Read on &rarr;</a>
-    </footer>
-  
-
-
-        </article>
-      
-      
-        <article class="post">
-          
-  <header class="page-header">
-    
-      <p class="meta text-muted text-uppercase">
-        
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-12-10T15:36:00-08:00" pubdate data-updated="true">Dec 10<span>th</span>, 2013</time>
-        
-      </p>
-    
-    
-      <h1 class="entry-title"><a href="/vpn-setup-openvpn-server-deploy-on-aws/">VPN Setup - OpenVPN Server Deploy on AWS</a></h1>
-    
-  </header>
-
-
-  <div class="entry-content clearfix"><h2>The Goal</h2>
-
-<ul>
-<li>Deploy an OpenVPN Server on AWS</li>
-</ul>
-
-
-</div>
-  
-  
-    <footer>
-      <a class="btn btn-default" rel="full-article" href="/vpn-setup-openvpn-server-deploy-on-aws/">Read on &rarr;</a>
-    </footer>
-  
-
-
-        </article>
-      
-      
-        <article class="post">
-          
-  <header class="page-header">
-    
-      <p class="meta text-muted text-uppercase">
-        
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-11-29T15:19:00-08:00" pubdate data-updated="true">Nov 29<span>th</span>, 2013</time>
-        
-      </p>
-    
-    
-      <h1 class="entry-title"><a href="/add-webproxy-cert-to-fedora/">Add WebProxy Cert to Fedora</a></h1>
-    
-  </header>
-
-
-  <div class="entry-content clearfix"><h2>The Goal</h2>
-
-<ul>
-<li>Make Fedora work behind a restrictive idiotic corporate web proxy</li>
-<li>Install a corporate cert to make that happen</li>
-</ul>
-
-
-</div>
-  
-  
-    <footer>
-      <a class="btn btn-default" rel="full-article" href="/add-webproxy-cert-to-fedora/">Read on &rarr;</a>
-    </footer>
-  
-
-
-        </article>
-      
-      
-        <article class="post">
-          
-  <header class="page-header">
-    
-      <p class="meta text-muted text-uppercase">
-        
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-11-26T17:20:00-08:00" pubdate data-updated="true">Nov 26<span>th</span>, 2013</time>
-        
-      </p>
-    
-    
-      <h1 class="entry-title"><a href="/add-twitter-timeline-to-octopress-sidebar/">Add Twitter Timeline to OctoPress Sidebar</a></h1>
-    
-  </header>
-
-
-  <div class="entry-content clearfix"><h2>The Goal</h2>
-
-<ul>
-<li>Add a Twitter timeline to the sidebar of an Octopress blog</li>
-</ul>
-
-
-</div>
-  
-  
-    <footer>
-      <a class="btn btn-default" rel="full-article" href="/add-twitter-timeline-to-octopress-sidebar/">Read on &rarr;</a>
-    </footer>
-  
-
-
-        </article>
-      
-    </div>
-
-    <ul class="pager">
-      
-        <li class="previous"><a href="/page/2/">&larr;&nbsp;Older</a></li>
-      
-      <li><a href="/blog/archives">Blog Archives</a></li>
-      
-        <li class="next disabled"><a href="#">Newer&nbsp;&rarr;</a></li>
-      
-    </ul>
   </div>
 
   
-    <aside class="sidebar col-md-3">
-      
-        <section class="panel panel-default">
+  <aside class="sidebar col-md-3">
+    
+      <section class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">Recent Posts</h3>
   </div>
   
   <div id="recent_posts" class="list-group">
     
-    <a class="list-group-item " href="/installing-ansible/">Installing Ansible</a>
+    <a class="list-group-item active" href="/installing-ansible/">Installing Ansible</a>
     
     <a class="list-group-item " href="/using-ansible-to-deploy-a-puppetmaster/">Using Ansible to Deploy a PuppetMaster</a>
     
@@ -681,7 +311,7 @@
       <h3 class="panel-title">GitHub Repos</h3>
   </div>
   <div class="list-group" id="gh_repos">
-    <p class="loading">Status updating&#8230;</p>
+    <p class="loading">Status updating...</p>
   </div>
   
     <div class="gh-profile-link pull-right text-muted">
@@ -723,8 +353,8 @@
 
 
 
-      
-    </aside>
+    
+  </aside>
   
 </div>
 

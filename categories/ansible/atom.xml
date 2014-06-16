@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ansible | Sandors Systems Scribbles]]></title>
   <link href="http://e30chris.github.io/categories/ansible/atom.xml" rel="self"/>
   <link href="http://e30chris.github.io/"/>
-  <updated>2014-06-13T15:41:57-07:00</updated>
+  <updated>2014-06-16T13:53:51-07:00</updated>
   <id>http://e30chris.github.io/</id>
   <author>
     <name><![CDATA[chris]]></name>
@@ -12,6 +12,53 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Installing Ansible]]></title>
+    <link href="http://e30chris.github.io/installing-ansible/"/>
+    <updated>2014-06-16T13:15:00-07:00</updated>
+    <id>http://e30chris.github.io/installing-ansible</id>
+    <content type="html"><![CDATA[<h2>The Problem</h2>
+
+<p>Need to deploy an Ansible Controller to run Playbooks from that uses the latest build and is easy to upgrade/configure.</p>
+
+<h2>The Solution</h2>
+
+<p>Install Ansible from the latest release on GitHub.</p>
+
+<h2>The Goal</h2>
+
+<p>Create an Ansible Controller directory that will run the latest version via git clone and setup the shell with the Ansible environment scripts.</p>
+
+<!-- more -->
+
+
+<hr />
+
+<h2>Clone the Ansible repo</h2>
+
+<p>Go to the GitHub project page <a href="https://github.com/ansible/ansible">github/ansible</a></p>
+
+<p>Choose a release version or the dev branch and clone.</p>
+
+<p><code>
+sandor@pineapplez:$ mkdir ~/Codestuff/AnsibleController &lt;-- Ansible runs from here
+sandor@pineapplez:$ mkdir ~/Codestuff/ansibles &lt;-- Playbooks go here
+sandor@pineapplez:$ cd ~/Codestuff/AnsibleController
+sandor@pineapplez:$ git@github.com:ansible/ansible.git
+</code></p>
+
+<h2>Run the environment script</h2>
+
+<p><code>
+sandor@pineapplez:$ ./hacking/env-setup
+</code></p>
+
+<p>To upgrade Ansible just go back into the AnsibleController directory and use git to get the latest.</p>
+
+<p>You are now setup to run Ansible from the Controller.  Push some SSH public keys and start pushing playbooks!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Using Ansible to deploy a PuppetMaster]]></title>

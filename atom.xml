@@ -4,7 +4,7 @@
   <title><![CDATA[Sandors Systems Scribbles]]></title>
   <link href="http://e30chris.github.io/atom.xml" rel="self"/>
   <link href="http://e30chris.github.io/"/>
-  <updated>2014-06-13T15:41:57-07:00</updated>
+  <updated>2014-06-16T13:53:51-07:00</updated>
   <id>http://e30chris.github.io/</id>
   <author>
     <name><![CDATA[chris]]></name>
@@ -12,6 +12,56 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Installing Ansible]]></title>
+    <link href="http://e30chris.github.io/installing-ansible/"/>
+    <updated>2014-06-16T13:15:00-07:00</updated>
+    <id>http://e30chris.github.io/installing-ansible</id>
+    <content type="html"><![CDATA[<h2>The Problem</h2>
+
+<p>Need to deploy an Ansible Controller to run Playbooks from that uses the latest build and is easy to upgrade/configure.</p>
+
+<h2>The Solution</h2>
+
+<p>Install Ansible from the latest release on GitHub.</p>
+
+<h2>The Goal</h2>
+
+<p>Create an Ansible Controller directory that will run the latest version via git clone and setup the shell with the Ansible environment scripts.</p>
+
+<!-- more -->
+
+
+<hr />
+
+<h2>Clone the Ansible repo</h2>
+
+<p>Go to the GitHub project page <a href="https://github.com/ansible/ansible">github/ansible</a></p>
+
+<p>Choose a release version or the dev branch and clone.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sandor@pineapplez:$ mkdir ~/Codestuff/AnsibleController &lt;-- Ansible runs from here
+</span><span class='line'>sandor@pineapplez:$ mkdir ~/Codestuff/ansibles &lt;-- Playbooks go here
+</span><span class='line'>sandor@pineapplez:$ cd ~/Codestuff/AnsibleController
+</span><span class='line'>sandor@pineapplez:$ git@github.com:ansible/ansible.git</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Run the environment script</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sandor@pineapplez:$ ./hacking/env-setup</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To upgrade Ansible just go back into the AnsibleController directory and use git to get the latest.</p>
+
+<p>You are now setup to run Ansible from the Controller.  Push some SSH public keys and start pushing playbooks!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Using Ansible to deploy a PuppetMaster]]></title>
