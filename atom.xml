@@ -4,7 +4,7 @@
   <title><![CDATA[Sandors Systems Scribbles]]></title>
   <link href="http://e30chris.github.io/atom.xml" rel="self"/>
   <link href="http://e30chris.github.io/"/>
-  <updated>2014-06-19T11:31:21-07:00</updated>
+  <updated>2014-07-17T12:03:00-07:00</updated>
   <id>http://e30chris.github.io/</id>
   <author>
     <name><![CDATA[chris]]></name>
@@ -12,6 +12,107 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Using Ansible to Align Passwords on Servers]]></title>
+    <link href="http://e30chris.github.io/using-ansible-to-align-passwords-on-servers/"/>
+    <updated>2014-07-17T11:16:00-07:00</updated>
+    <id>http://e30chris.github.io/using-ansible-to-align-passwords-on-servers</id>
+    <content type="html"><![CDATA[<h2>The Problem:</h2>
+
+<p>A group of servers get their passwords updated every 3 months with a new shared password.  The servers passwords are then inconsistently updated leaving a group of servers with one of several possible user passwords.</p>
+
+<h2>The Goal:</h2>
+
+<p>Use Ansible to attempt to login to each server using each of the possible passwords to find the correct one and log it.  The final step of the playbook will have Ansible logging into each server using the found to be correct password and updating each server to a new shared password.</p>
+
+<p><em><strong>note &ndash; using the same root password on all your servers is a terrible idea and completely against the SysAdmin Bible.  Use random passwords and keys!</strong></em></p>
+
+<!-- more -->
+
+
+<h2>HowTo:</h2>
+
+<ul>
+<li>Download the playbook from
+
+<ul>
+<li>GitHub &ndash; <a href="https://github.com/e30chris/Ansible-AlignPassword">repo</a></li>
+<li>Galaxy &ndash; <a href="https://galaxy.ansible.com/list#/roles/1134">repo</a></li>
+</ul>
+</li>
+<li>Create a branch to edit the variables for your environment</li>
+</ul>
+
+
+<p>  <code>
+  sandor@pineapplez:$ cd ~/Codestuff/ansibles/Ansible-AlignPassword
+  sandor@pineapplez:$ git checkout -b qatenv    
+ </code></p>
+
+<ul>
+<li>ansible-vault the file that will contain the passwords.</li>
+</ul>
+
+
+<p>  <code>
+  sandor@pineapplez:$ ansible-vault encrypt group_vars/all
+ </code></p>
+
+<ul>
+<li>Edit the vars for the environment</li>
+</ul>
+
+
+<p>  <code>
+  sandor@pineapplez:$ ansible-vault edit group_vars/all
+ </code></p>
+
+<ul>
+<li>Add the inventory to hosts</li>
+<li>Verify Ansible connect with ping pong</li>
+</ul>
+
+
+<p>  <code>
+  sandor@pineapplez:$ ansible -i hosts all -m ping
+ </code></p>
+
+<ul>
+<li>Run the playbook</li>
+</ul>
+
+
+<p>  <code>
+  sandor@pineapplez:$ ansible-playbook -i hosts site.yml -vv
+ </code></p>
+
+<h2>Common Task Actions</h2>
+
+<ul>
+<li>Attempt to login to each server using all possible passwords</li>
+<li>Register which passwords work on each server</li>
+<li>Set a new shared password for every server</li>
+</ul>
+
+
+<h2>Variables</h2>
+
+<p>Go here:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>group_vars/all</span></code></pre></td></tr></table></div></figure>
+
+
+<p>With this format:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>variable: value</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Installing Ansible]]></title>
