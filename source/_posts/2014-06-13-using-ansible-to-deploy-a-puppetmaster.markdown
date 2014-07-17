@@ -15,6 +15,8 @@ Use Ansible to deploy Puppet onto freshly built servers that contain just a SysA
 ## The Goal
 A repeatable and documented way to deploy the very finicky Puppet installer in any environment needed from local vagrants to the clouds of vSphere, AWS, RackSpace or Digital Ocean.
 
+#### Note: this playbook is still a work in progress.  Most of the issues are fighting Puppets insane complexity of getting installed correctly with a few small Ansible bugs sprinkled in.
+
 <!-- more -->
 ---
 
