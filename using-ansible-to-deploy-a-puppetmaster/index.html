@@ -205,13 +205,13 @@
 </span><span class='line'>os_version: 7
 </span><span class='line'>os_arch: amd64
 </span><span class='line'>
-</span><span class='line'># pe installer
-</span><span class='line'>pe_installer: puppet-enterprise-""-""-""-""
+</span><span class='line'># pe installer 
+</span><span class='line'>pe_installer: puppet-enterprise----
 </span><span class='line'>
 </span><span class='line'># hostnames
-</span><span class='line'>pupmaster_hostname: pupmaster.local
-</span><span class='line'>pupdb_hostname: pupdb.local
-</span><span class='line'>pupconsole_hostname: pupconsole.local
+</span><span class='line'>pupmaster_hostname: pupmaster.argo.local
+</span><span class='line'>pupdb_hostname: pupdb.argo.local
+</span><span class='line'>pupconsole_hostname: pupconsole.argo.local
 </span><span class='line'>
 </span><span class='line'># IP's
 </span><span class='line'>pupmaster_ip: 10.0.0.10
@@ -288,15 +288,16 @@
 <span class='line-number'>11</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>- name: Ensure PE tarball present
 </span><span class='line'>  get_url:
-</span><span class='line'>    url=https://s3.amazonaws.com/pe-builds/released/""/"".tar.gz
-</span><span class='line'>    dest=/root/"".tar.gz
+</span><span class='line'>    url=https://s3.amazonaws.com/pe-builds/released//.tar.gz
+</span><span class='line'>    dest=/root/peinstaller.tar.gz
 </span><span class='line'>    force=no
 </span><span class='line'>
 </span><span class='line'>- name: Ensure Puppet untar'd to install directory
-</span><span class='line'>  unarchive: 
+</span><span class='line'>  unarchive:
 </span><span class='line'>    copy=no
-</span><span class='line'>    src=/root/"".tar.gz
-</span><span class='line'>    dest=/root/puppetinstall</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>    src=/root/peinstaller.tar.gz
+</span><span class='line'>    dest=/root/puppetinstall
+</span></code></pre></td></tr></table></div></figure>
 
 
 <hr />
@@ -305,6 +306,8 @@
 
 <p>Each server then runs the same basic installer command with a few things named for each role like the installer log.</p>
 
+<p>Here is the PuppetMasters install-</p>
+
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -312,13 +315,31 @@
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>- name: answer file for PupMaster
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>---
+</span><span class='line'># Tasks for PupMaster
+</span><span class='line'>- name: Ensure install log present
+</span><span class='line'>  file:
+</span><span class='line'>    path=/root/puppetinstall/pupmaster_install.log
+</span><span class='line'>    owner=root
+</span><span class='line'>    state=touch
+</span><span class='line'>
+</span><span class='line'>- name: answer file for PupMaster
 </span><span class='line'>  template:
 </span><span class='line'>    src="../templates/pupmaster.answer.j2"
-</span><span class='line'>    dest=/root/puppetinstall/""/answers/pupmaster.answer
+</span><span class='line'>    dest=/root/puppetinstall/pupmaster.answer
+</span><span class='line'>    owner=root
 </span><span class='line'>
 </span><span class='line'>- name: run the pe installer
-</span><span class='line'>  command: /root/puppetinstall/""/puppet-enterprise-installer -a /root/puppetinstall/""/answers/pupmaster.answer | tee /root/puppetinstall/pupmaster_install.log
+</span><span class='line'>  command: /root/puppetinstall//puppet-enterprise-installer -a /root/puppetinstall/pupmaster.answer -l /root/puppetinstall/pupmaster_install.log
 </span></code></pre></td></tr></table></div></figure>
 
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ansible | Sandors Systems Scribbles]]></title>
   <link href="http://e30chris.github.io/categories/ansible/atom.xml" rel="self"/>
   <link href="http://e30chris.github.io/"/>
-  <updated>2014-07-28T10:48:58-07:00</updated>
+  <updated>2014-07-28T11:00:33-07:00</updated>
   <id>http://e30chris.github.io/</id>
   <author>
     <name><![CDATA[chris]]></name>
@@ -221,13 +221,13 @@ os_arch: amd64</p>
 
 <h1>pe installer</h1>
 
-<p>pe_installer: puppet-enterprise-&ldquo;&rdquo;&ndash;&ldquo;&rdquo;&ndash;&ldquo;&rdquo;&ndash;&ldquo;&rdquo;</p>
+<p>pe_installer: puppet-enterprise-&ndash;&ndash;&ndash;</p>
 
 <h1>hostnames</h1>
 
-<p>pupmaster_hostname: pupmaster.local
-pupdb_hostname: pupdb.local
-pupconsole_hostname: pupconsole.local</p>
+<p>pupmaster_hostname: pupmaster.argo.local
+pupdb_hostname: pupdb.argo.local
+pupconsole_hostname: pupconsole.argo.local</p>
 
 <h1>IP&rsquo;s</h1>
 
@@ -294,8 +294,8 @@ file:
 &ndash; name: Ensure PE tarball present
   get_url:</p>
 
-<pre><code>url=https://s3.amazonaws.com/pe-builds/released/""/"".tar.gz
-dest=/root/"".tar.gz
+<pre><code>url=https://s3.amazonaws.com/pe-builds/released//.tar.gz
+dest=/root/peinstaller.tar.gz
 force=no
 </code></pre>
 
@@ -303,29 +303,36 @@ force=no
 <li>name: Ensure Puppet untar&rsquo;d to install directory
 unarchive:
   copy=no
-  src=/root/&ldquo;&rdquo;.tar.gz
-  dest=/root/puppetinstall
-```</li>
+  src=/root/peinstaller.tar.gz
+  dest=/root/puppetinstall</li>
 </ul>
 
 
-<hr />
+<h2>```</h2>
 
 <h2>Tasks that run on each server role</h2>
 
 <p>Each server then runs the same basic installer command with a few things named for each role like the installer log.</p>
 
-<p>```
-&ndash; name: answer file for PupMaster
-  template:</p>
+<p>Here is the PuppetMasters install-</p>
 
-<pre><code>src="../templates/pupmaster.answer.j2"
-dest=/root/puppetinstall/""/answers/pupmaster.answer
-</code></pre>
+<h2>```</h2>
+
+<h1>Tasks for PupMaster</h1>
 
 <ul>
-<li>name: run the pe installer
-command: /root/puppetinstall/&ldquo;&rdquo;/puppet-enterprise-installer -a /root/puppetinstall/&ldquo;&rdquo;/answers/pupmaster.answer | tee /root/puppetinstall/pupmaster_install.log</li>
+<li><p>name: Ensure install log present
+file:
+  path=/root/puppetinstall/pupmaster_install.log
+  owner=root
+  state=touch</p></li>
+<li><p>name: answer file for PupMaster
+template:
+  src=&ldquo;../templates/pupmaster.answer.j2&rdquo;
+  dest=/root/puppetinstall/pupmaster.answer
+  owner=root</p></li>
+<li><p>name: run the pe installer
+command: /root/puppetinstall//puppet-enterprise-installer -a /root/puppetinstall/pupmaster.answer -l /root/puppetinstall/pupmaster_install.log</p></li>
 </ul>
 
 
