@@ -45,13 +45,13 @@ os_family: debian
 os_version: 7
 os_arch: amd64
 
-# pe installer
-pe_installer: puppet-enterprise-"{{ pe_version }}"-"{{ os_family }}"-"{{ os_version }}"-"{{ os_arch }}"
+# pe installer 
+pe_installer: puppet-enterprise-{{ pe_version }}-{{ os_family }}-{{ os_version }}-{{ os_arch }}
 
 # hostnames
-pupmaster_hostname: pupmaster.local
-pupdb_hostname: pupdb.local
-pupconsole_hostname: pupconsole.local
+pupmaster_hostname: pupmaster.argo.local
+pupdb_hostname: pupdb.argo.local
+pupconsole_hostname: pupconsole.argo.local
 
 # IP's
 pupmaster_ip: 10.0.0.10
@@ -107,15 +107,16 @@ When you download the PE tarball you can grab the download url from S3.  This gr
 ```
 - name: Ensure PE tarball present
   get_url:
-    url=https://s3.amazonaws.com/pe-builds/released/"{{ pe_version }}"/"{{ pe_installer }}".tar.gz
-    dest=/root/"{{ pe_installer }}".tar.gz
+    url=https://s3.amazonaws.com/pe-builds/released/{{ pe_version }}/{{ pe_installer }}.tar.gz
+    dest=/root/peinstaller.tar.gz
     force=no
 
 - name: Ensure Puppet untar'd to install directory
-  unarchive: 
+  unarchive:
     copy=no
-    src=/root/"{{ pe_installer }}".tar.gz
+    src=/root/peinstaller.tar.gz
     dest=/root/puppetinstall
+
 ```
 ---
 
@@ -123,15 +124,25 @@ When you download the PE tarball you can grab the download url from S3.  This gr
 
 Each server then runs the same basic installer command with a few things named for each role like the installer log.
 
+Here is the PuppetMasters install-
 
 ```
+---
+# Tasks for PupMaster
+- name: Ensure install log present
+  file:
+    path=/root/puppetinstall/pupmaster_install.log
+    owner=root
+    state=touch
+
 - name: answer file for PupMaster
   template:
     src="../templates/pupmaster.answer.j2"
-    dest=/root/puppetinstall/"{{ pe_installer }}"/answers/pupmaster.answer
+    dest=/root/puppetinstall/pupmaster.answer
+    owner=root
 
 - name: run the pe installer
-  command: /root/puppetinstall/"{{ pe_installer }}"/puppet-enterprise-installer -a /root/puppetinstall/"{{ pe_installer }}"/answers/pupmaster.answer | tee /root/puppetinstall/pupmaster_install.log
+  command: /root/puppetinstall/{{ pe_installer }}/puppet-enterprise-installer -a /root/puppetinstall/pupmaster.answer -l /root/puppetinstall/pupmaster_install.log
 
 ```
 
