@@ -27,8 +27,9 @@ Choose a release version or the dev branch and clone.
 ```
 sandor@pineapplez:$ mkdir ~/Codestuff/AnsibleController <-- Ansible runs from here
 sandor@pineapplez:$ mkdir ~/Codestuff/ansibles <-- Playbooks go here
+sandor@pineapplez:$ touch ~/Codestuff/ansibles/ansible_hosts <-- Server inventory goes here
 sandor@pineapplez:$ cd ~/Codestuff/AnsibleController
-sandor@pineapplez:$ git@github.com:ansible/ansible.git
+sandor@pineapplez:$ git clone git@github.com:ansible/ansible.git
 ```
 
 ## Run the environment script
@@ -39,5 +40,7 @@ sandor@pineapplez:$ ./hacking/env-setup
 
 To upgrade Ansible just go back into the AnsibleController directory and use git to get the latest.
 
-You are now setup to run Ansible from the Controller.  Push some SSH public keys and start pushing playbooks!
+You are now setup to run Ansible from the Controller.  Because the inventory file is inside the playbook dir or ~/Codestuff/ansibles/ansible_hosts it will not get overwritten if you change the AnsibleController dir.
+
+Push some SSH public keys and start pushing playbooks!
 
