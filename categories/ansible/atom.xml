@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ansible | Sandors Systems Scribbles]]></title>
   <link href="http://e30chris.github.io/categories/ansible/atom.xml" rel="self"/>
   <link href="http://e30chris.github.io/"/>
-  <updated>2014-07-17T12:03:00-07:00</updated>
+  <updated>2014-07-28T10:48:58-07:00</updated>
   <id>http://e30chris.github.io/</id>
   <author>
     <name><![CDATA[chris]]></name>
@@ -143,8 +143,9 @@ variable: value
 <p><code>
 sandor@pineapplez:$ mkdir ~/Codestuff/AnsibleController &lt;-- Ansible runs from here
 sandor@pineapplez:$ mkdir ~/Codestuff/ansibles &lt;-- Playbooks go here
+sandor@pineapplez:$ touch ~/Codestuff/ansibles/ansible_hosts &lt;-- Server inventory goes here
 sandor@pineapplez:$ cd ~/Codestuff/AnsibleController
-sandor@pineapplez:$ git@github.com:ansible/ansible.git
+sandor@pineapplez:$ git clone git@github.com:ansible/ansible.git
 </code></p>
 
 <h2>Run the environment script</h2>
@@ -155,7 +156,9 @@ sandor@pineapplez:$ ./hacking/env-setup
 
 <p>To upgrade Ansible just go back into the AnsibleController directory and use git to get the latest.</p>
 
-<p>You are now setup to run Ansible from the Controller.  Push some SSH public keys and start pushing playbooks!</p>
+<p>You are now setup to run Ansible from the Controller.  Because the inventory file is inside the playbook dir or ~/Codestuff/ansibles/ansible_hosts it will not get overwritten if you change the AnsibleController dir.</p>
+
+<p>Push some SSH public keys and start pushing playbooks!</p>
 ]]></content>
   </entry>
   

@@ -150,10 +150,12 @@
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
+<span class='line-number'>5</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>sandor@pineapplez:$ mkdir ~/Codestuff/AnsibleController &lt;-- Ansible runs from here
 </span><span class='line'>sandor@pineapplez:$ mkdir ~/Codestuff/ansibles &lt;-- Playbooks go here
+</span><span class='line'>sandor@pineapplez:$ touch ~/Codestuff/ansibles/ansible_hosts &lt;-- Server inventory goes here
 </span><span class='line'>sandor@pineapplez:$ cd ~/Codestuff/AnsibleController
-</span><span class='line'>sandor@pineapplez:$ git@github.com:ansible/ansible.git</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>sandor@pineapplez:$ git clone git@github.com:ansible/ansible.git</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>Run the environment script</h2>
@@ -164,7 +166,9 @@
 
 <p>To upgrade Ansible just go back into the AnsibleController directory and use git to get the latest.</p>
 
-<p>You are now setup to run Ansible from the Controller.  Push some SSH public keys and start pushing playbooks!</p>
+<p>You are now setup to run Ansible from the Controller.  Because the inventory file is inside the playbook dir or ~/Codestuff/ansibles/ansible_hosts it will not get overwritten if you change the AnsibleController dir.</p>
+
+<p>Push some SSH public keys and start pushing playbooks!</p>
 </div>
 
 
