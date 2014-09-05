@@ -4,7 +4,7 @@
   <title><![CDATA[Sandors Systems Scribbles]]></title>
   <link href="http://e30chris.github.io/atom.xml" rel="self"/>
   <link href="http://e30chris.github.io/"/>
-  <updated>2014-07-28T11:00:33-07:00</updated>
+  <updated>2014-09-05T12:30:23-07:00</updated>
   <id>http://e30chris.github.io/</id>
   <author>
     <name><![CDATA[chris]]></name>
@@ -12,6 +12,100 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ansible on HP-UX 11.31]]></title>
+    <link href="http://e30chris.github.io/ansible-on-hp-ux-11-dot-31/"/>
+    <updated>2014-09-03T17:11:00-07:00</updated>
+    <id>http://e30chris.github.io/ansible-on-hp-ux-11-dot-31</id>
+    <content type="html"><![CDATA[<h2>The problem</h2>
+
+<p>Old corporations that are running ancient OS&#8217;es desperately need configuration management and automation to keep the dinosaurs efficient.</p>
+
+<h2>The goal</h2>
+
+<p>Install Python on HP-UX so Ansible can manage and automate the ancient servers.</p>
+
+<h2>HowTo</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sandor@pineapplez:$ ansible -i hosts all -m raw -a "swinstall -x mount_all_filesystems=false -s depotserver:/depot/11.31/python python"</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ansible on RedHat 5.x]]></title>
+    <link href="http://e30chris.github.io/ansible-on-redhat-5-dot-x/"/>
+    <updated>2014-09-03T16:39:00-07:00</updated>
+    <id>http://e30chris.github.io/ansible-on-redhat-5-dot-x</id>
+    <content type="html"><![CDATA[<h2>The problem</h2>
+
+<p>Older Pythons that live on older RedHats do not have json support.  Old corporations still use old OS&#8217;es like RedHat 5.x but need to use modern configuration management tools like Ansible.</p>
+
+<h2>The goal</h2>
+
+<p>Enable RedHat 5.x systems to run Ansible by installing json support on Python 2.4.</p>
+
+<h2>HowTo</h2>
+
+<p><em>Using Ansible Raw</em></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sandor@pineapplez:$ ansible -i hosts all -m raw -a "yum -y install python-simplejson"</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Run Ansible through pmksh]]></title>
+    <link href="http://e30chris.github.io/run-ansible-through-pmksh/"/>
+    <updated>2014-09-03T11:53:00-07:00</updated>
+    <id>http://e30chris.github.io/run-ansible-through-pmksh</id>
+    <content type="html"><![CDATA[<h2>The problem</h2>
+
+<p>Old corporations use shitty old software to do things that modern Linux is really good at doing itself.  Using pmksh instead of a well laid out sudoers setup is what the problem is.</p>
+
+<h2>The goal</h2>
+
+<p>Configure Ansible playbooks to execute through the pmksh shell on the targeted servers.</p>
+
+<!-- more -->
+
+
+<h2>Shells &amp; Ansible</h2>
+
+<p>Currently Ansible &amp; Python work together to take the output from bash and report back with formatting.  Ansible does not understand ksh talk making running through pmksh a workaround for now.  Once Ansible add ksh to its list of shells then the current set of playbooks that are using &lsquo;command&rsquo; can move to using the full suite of modules.</p>
+
+<p>The AIX setup I am Ansiblizing now using bash shell for standard user commands and pmksh for all root level (yes it should be sudoers) commands.  Tasks that do not need root level permissions I am using standard modules.  Tasks that need root I am using the following HowTo.</p>
+
+<p>Ansible Shells:</p>
+
+<p><a href="https://github.com/ansible/ansible/tree/devel/lib/ansible/runner/shell_plugins">github repo &ndash; ansible/ansible/tree/devel/lib/ansible/runner/shell_plugins</a></p>
+
+<h2>HowTo</h2>
+
+<p>Current Workaround:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sandor@pineapplez:$ ansible -i hosts all -m command -a "/opt/quest/bin/pmksh -c '/bin/touch /root/bmw.325'"</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>tasks:
+</span><span class='line'>
+</span><span class='line'>- name: run a command through pmksh
+</span><span class='line'>  command: "/opt/quest/bin/pmksh -c /bin/touch /root/bmw.325'"</span></code></pre></td></tr></table></div></figure>
+
+
+<p><em>once ksh is added to the list of shells I will update this post</em></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Using Ansible to Align Passwords on Servers]]></title>

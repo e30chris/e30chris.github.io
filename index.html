@@ -114,6 +114,154 @@
 
 
 
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-09-03T17:11:00-07:00" pubdate data-updated="true">Sep 3<span>rd</span>, 2014</time>
+        
+      </p>
+    
+    
+      <h1 class="entry-title"><a href="/ansible-on-hp-ux-11-dot-31/">Ansible on HP-UX 11.31</a></h1>
+    
+  </header>
+
+
+  <div class="entry-content clearfix"><h2>The problem</h2>
+
+<p>Old corporations that are running ancient OS&#8217;es desperately need configuration management and automation to keep the dinosaurs efficient.</p>
+
+<h2>The goal</h2>
+
+<p>Install Python on HP-UX so Ansible can manage and automate the ancient servers.</p>
+
+<h2>HowTo</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sandor@pineapplez:$ ansible -i hosts all -m raw -a "swinstall -x mount_all_filesystems=false -s depotserver:/depot/11.31/python python"</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+        </article>
+      
+      
+        <article class="post">
+          
+  <header class="page-header">
+    
+      <p class="meta text-muted text-uppercase">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-09-03T16:39:00-07:00" pubdate data-updated="true">Sep 3<span>rd</span>, 2014</time>
+        
+      </p>
+    
+    
+      <h1 class="entry-title"><a href="/ansible-on-redhat-5-dot-x/">Ansible on RedHat 5.x</a></h1>
+    
+  </header>
+
+
+  <div class="entry-content clearfix"><h2>The problem</h2>
+
+<p>Older Pythons that live on older RedHats do not have json support.  Old corporations still use old OS&#8217;es like RedHat 5.x but need to use modern configuration management tools like Ansible.</p>
+
+<h2>The goal</h2>
+
+<p>Enable RedHat 5.x systems to run Ansible by installing json support on Python 2.4.</p>
+
+<h2>HowTo</h2>
+
+<p><em>Using Ansible Raw</em></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sandor@pineapplez:$ ansible -i hosts all -m raw -a "yum -y install python-simplejson"</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+        </article>
+      
+      
+        <article class="post">
+          
+  <header class="page-header">
+    
+      <p class="meta text-muted text-uppercase">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-09-03T11:53:00-07:00" pubdate data-updated="true">Sep 3<span>rd</span>, 2014</time>
+        
+      </p>
+    
+    
+      <h1 class="entry-title"><a href="/run-ansible-through-pmksh/">Run Ansible Through Pmksh</a></h1>
+    
+  </header>
+
+
+  <div class="entry-content clearfix"><h2>The problem</h2>
+
+<p>Old corporations use shitty old software to do things that modern Linux is really good at doing itself.  Using pmksh instead of a well laid out sudoers setup is what the problem is.</p>
+
+<h2>The goal</h2>
+
+<p>Configure Ansible playbooks to execute through the pmksh shell on the targeted servers.</p>
+
+</div>
+  
+  
+    <footer>
+      <a class="btn btn-default" rel="full-article" href="/run-ansible-through-pmksh/">Read on &rarr;</a>
+    </footer>
+  
+
+
+        </article>
+      
+      
+        <article class="post">
+          
+  <header class="page-header">
+    
+      <p class="meta text-muted text-uppercase">
+        
+
+
+
+
+
+
+
+
+
+
+
+
 <span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-07-17T11:16:00-07:00" pubdate data-updated="true">Jul 17<span>th</span>, 2014</time>
         
       </p>
@@ -446,149 +594,6 @@
 
         </article>
       
-      
-        <article class="post">
-          
-  <header class="page-header">
-    
-      <p class="meta text-muted text-uppercase">
-        
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-12-10T16:13:00-08:00" pubdate data-updated="true">Dec 10<span>th</span>, 2013</time>
-        
-      </p>
-    
-    
-      <h1 class="entry-title"><a href="/vpn-setup-macbook-to-openvpn-server-using-tunnelblick/">VPN Setup - MacBook to OpenVPN Server Using Tunnelblick</a></h1>
-    
-  </header>
-
-
-  <div class="entry-content clearfix"><h2>The Goal</h2>
-
-<ul>
-<li>Get MacBook to connect to a OpenVPN Server</li>
-<li>Install Tunnelblick to make that happen</li>
-</ul>
-
-
-</div>
-  
-  
-    <footer>
-      <a class="btn btn-default" rel="full-article" href="/vpn-setup-macbook-to-openvpn-server-using-tunnelblick/">Read on &rarr;</a>
-    </footer>
-  
-
-
-        </article>
-      
-      
-        <article class="post">
-          
-  <header class="page-header">
-    
-      <p class="meta text-muted text-uppercase">
-        
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-12-10T15:36:00-08:00" pubdate data-updated="true">Dec 10<span>th</span>, 2013</time>
-        
-      </p>
-    
-    
-      <h1 class="entry-title"><a href="/vpn-setup-openvpn-server-deploy-on-aws/">VPN Setup - OpenVPN Server Deploy on AWS</a></h1>
-    
-  </header>
-
-
-  <div class="entry-content clearfix"><h2>The Goal</h2>
-
-<ul>
-<li>Deploy an OpenVPN Server on AWS</li>
-</ul>
-
-
-</div>
-  
-  
-    <footer>
-      <a class="btn btn-default" rel="full-article" href="/vpn-setup-openvpn-server-deploy-on-aws/">Read on &rarr;</a>
-    </footer>
-  
-
-
-        </article>
-      
-      
-        <article class="post">
-          
-  <header class="page-header">
-    
-      <p class="meta text-muted text-uppercase">
-        
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-11-29T15:19:00-08:00" pubdate data-updated="true">Nov 29<span>th</span>, 2013</time>
-        
-      </p>
-    
-    
-      <h1 class="entry-title"><a href="/add-webproxy-cert-to-fedora/">Add WebProxy Cert to Fedora</a></h1>
-    
-  </header>
-
-
-  <div class="entry-content clearfix"><h2>The Goal</h2>
-
-<ul>
-<li>Make Fedora work behind a restrictive idiotic corporate web proxy</li>
-<li>Install a corporate cert to make that happen</li>
-</ul>
-
-
-</div>
-  
-  
-    <footer>
-      <a class="btn btn-default" rel="full-article" href="/add-webproxy-cert-to-fedora/">Read on &rarr;</a>
-    </footer>
-  
-
-
-        </article>
-      
     </div>
 
     <ul class="pager">
@@ -612,15 +617,15 @@
   
   <div id="recent_posts" class="list-group">
     
+    <a class="list-group-item " href="/ansible-on-hp-ux-11-dot-31/">Ansible on HP-UX 11.31</a>
+    
+    <a class="list-group-item " href="/ansible-on-redhat-5-dot-x/">Ansible on RedHat 5.x</a>
+    
+    <a class="list-group-item " href="/run-ansible-through-pmksh/">Run Ansible Through Pmksh</a>
+    
     <a class="list-group-item " href="/using-ansible-to-align-passwords-on-servers/">Using Ansible to Align Passwords on Servers</a>
     
     <a class="list-group-item " href="/installing-ansible/">Installing Ansible</a>
-    
-    <a class="list-group-item " href="/using-ansible-to-deploy-a-puppetmaster/">Using Ansible to Deploy a PuppetMaster</a>
-    
-    <a class="list-group-item " href="/using-goaccess-to-parse-webserver-logs/">Using GoAccess to Parse Webserver Logs</a>
-    
-    <a class="list-group-item " href="/dogecoin-mining-on-digital-ocean/">Dogecoin Mining on Digital Ocean</a>
     
   </div>
 </section>
@@ -662,7 +667,7 @@
     
     
     <a class="list-group-item " href="/categories/ansible/index.html">
-        <span class="badge">4</span>
+        <span class="badge">7</span>
         ansible
       </a>
     

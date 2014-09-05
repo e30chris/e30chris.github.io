@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ansible | Sandors Systems Scribbles]]></title>
   <link href="http://e30chris.github.io/categories/ansible/atom.xml" rel="self"/>
   <link href="http://e30chris.github.io/"/>
-  <updated>2014-07-28T11:00:33-07:00</updated>
+  <updated>2014-09-05T12:30:23-07:00</updated>
   <id>http://e30chris.github.io/</id>
   <author>
     <name><![CDATA[chris]]></name>
@@ -12,6 +12,98 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ansible on HP-UX 11.31]]></title>
+    <link href="http://e30chris.github.io/ansible-on-hp-ux-11-dot-31/"/>
+    <updated>2014-09-03T17:11:00-07:00</updated>
+    <id>http://e30chris.github.io/ansible-on-hp-ux-11-dot-31</id>
+    <content type="html"><![CDATA[<h2>The problem</h2>
+
+<p>Old corporations that are running ancient OS'es desperately need configuration management and automation to keep the dinosaurs efficient.</p>
+
+<h2>The goal</h2>
+
+<p>Install Python on HP-UX so Ansible can manage and automate the ancient servers.</p>
+
+<h2>HowTo</h2>
+
+<p><code>
+sandor@pineapplez:$ ansible -i hosts all -m raw -a "swinstall -x mount_all_filesystems=false -s depotserver:/depot/11.31/python python"
+</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ansible on RedHat 5.x]]></title>
+    <link href="http://e30chris.github.io/ansible-on-redhat-5-dot-x/"/>
+    <updated>2014-09-03T16:39:00-07:00</updated>
+    <id>http://e30chris.github.io/ansible-on-redhat-5-dot-x</id>
+    <content type="html"><![CDATA[<h2>The problem</h2>
+
+<p>Older Pythons that live on older RedHats do not have json support.  Old corporations still use old OS'es like RedHat 5.x but need to use modern configuration management tools like Ansible.</p>
+
+<h2>The goal</h2>
+
+<p>Enable RedHat 5.x systems to run Ansible by installing json support on Python 2.4.</p>
+
+<h2>HowTo</h2>
+
+<p><em>Using Ansible Raw</em></p>
+
+<p><code>
+sandor@pineapplez:$ ansible -i hosts all -m raw -a "yum -y install python-simplejson"
+</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Run Ansible through pmksh]]></title>
+    <link href="http://e30chris.github.io/run-ansible-through-pmksh/"/>
+    <updated>2014-09-03T11:53:00-07:00</updated>
+    <id>http://e30chris.github.io/run-ansible-through-pmksh</id>
+    <content type="html"><![CDATA[<h2>The problem</h2>
+
+<p>Old corporations use shitty old software to do things that modern Linux is really good at doing itself.  Using pmksh instead of a well laid out sudoers setup is what the problem is.</p>
+
+<h2>The goal</h2>
+
+<p>Configure Ansible playbooks to execute through the pmksh shell on the targeted servers.</p>
+
+<!-- more -->
+
+
+<h2>Shells &amp; Ansible</h2>
+
+<p>Currently Ansible &amp; Python work together to take the output from bash and report back with formatting.  Ansible does not understand ksh talk making running through pmksh a workaround for now.  Once Ansible add ksh to its list of shells then the current set of playbooks that are using &lsquo;command&rsquo; can move to using the full suite of modules.</p>
+
+<p>The AIX setup I am Ansiblizing now using bash shell for standard user commands and pmksh for all root level (yes it should be sudoers) commands.  Tasks that do not need root level permissions I am using standard modules.  Tasks that need root I am using the following HowTo.</p>
+
+<p>Ansible Shells:</p>
+
+<p><a href="https://github.com/ansible/ansible/tree/devel/lib/ansible/runner/shell_plugins">github repo &ndash; ansible/ansible/tree/devel/lib/ansible/runner/shell_plugins</a></p>
+
+<h2>HowTo</h2>
+
+<p>Current Workaround:</p>
+
+<p><code>
+sandor@pineapplez:$ ansible -i hosts all -m command -a "/opt/quest/bin/pmksh -c '/bin/touch /root/bmw.325'"
+</code></p>
+
+<p>```
+tasks:</p>
+
+<ul>
+<li>name: run a command through pmksh
+command: &ldquo;/opt/quest/bin/pmksh -c /bin/touch /root/bmw.325'&rdquo;
+```</li>
+</ul>
+
+
+<p><em>once ksh is added to the list of shells I will update this post</em></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Using Ansible to Align Passwords on Servers]]></title>
@@ -159,260 +251,6 @@ sandor@pineapplez:$ ./hacking/env-setup
 <p>You are now setup to run Ansible from the Controller.  Because the inventory file is inside the playbook dir or ~/Codestuff/ansibles/ansible_hosts it will not get overwritten if you change the AnsibleController dir.</p>
 
 <p>Push some SSH public keys and start pushing playbooks!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Using Ansible to deploy a PuppetMaster]]></title>
-    <link href="http://e30chris.github.io/using-ansible-to-deploy-a-puppetmaster/"/>
-    <updated>2014-06-13T10:58:00-07:00</updated>
-    <id>http://e30chris.github.io/using-ansible-to-deploy-a-puppetmaster</id>
-    <content type="html"><![CDATA[<h2>The Problem</h2>
-
-<p>Need to deploy a new Puppet Enterprise cluster with a PuppetMaster, PuppetConsole and a PuppetDB while avoiding typos and misconfigurations.  Also need to deploy to several environments using a consistent configuration.</p>
-
-<h2>The Solution</h2>
-
-<p>Use Ansible to deploy Puppet onto freshly built servers that contain just a SysAdmins SSH public key.</p>
-
-<h2>The Goal</h2>
-
-<p>A repeatable and documented way to deploy the very finicky Puppet installer in any environment needed from local vagrants to the clouds of vSphere, AWS, RackSpace or Digital Ocean.</p>
-
-<h4>Note: this playbook is still a work in progress.  Most of the issues are fighting Puppets insane complexity of getting installed correctly with a few small Ansible bugs sprinkled in.</h4>
-
-<!-- more -->
-
-
-<hr />
-
-<h2>GitHub Repo</h2>
-
-<p><a href="https://github.com/e30chris/Ansible-PuppetEnterpriseDeploy">github.com/e30chris/Ansible-PuppetEnterpriseDeploy</a></p>
-
-<hr />
-
-<h2>Playbook notes</h2>
-
-<h2>Setting the variables for each environment</h2>
-
-<p>```
-sandor@pineapplez:$ cd ~/Ansible-PuppetEnterpriseDeploy/</p>
-
-<h2>sandor@pineapplez:$ cat group_vars/all</h2>
-
-<h1>common variables for PuppetMaster Deployment</h1>
-
-<h1>format for this file</h1>
-
-<h1>variable: fact</h1>
-
-<p>#</p>
-
-<h1>version of Puppet Enterprise</h1>
-
-<p>pe_version: 3.2.3</p>
-
-<h1>os family</h1>
-
-<p>os_family: debian
-os_version: 7
-os_arch: amd64</p>
-
-<h1>pe installer</h1>
-
-<p>pe_installer: puppet-enterprise-&ndash;&ndash;&ndash;</p>
-
-<h1>hostnames</h1>
-
-<p>pupmaster_hostname: pupmaster.argo.local
-pupdb_hostname: pupdb.argo.local
-pupconsole_hostname: pupconsole.argo.local</p>
-
-<h1>IP&rsquo;s</h1>
-
-<p>pupmaster_ip: 10.0.0.10
-pupdb_ip: 10.0.0.11
-pupconsole_ip: 10.0.0.12</p>
-
-<h1>dns salt hostnames</h1>
-
-<p>pupmaster_salt_hostnames: puppet,puppetmaster
-pupdb_salt_hostnames: puppetdb
-pupconsole_salt_hostname: pupconsole</p>
-
-<h1>passwords</h1>
-
-<p>console_auth_db_pass: arandompasswordthatneedschangedhere
-console_db_pass: arandompasswordthatneedschangedhere
-pupdb_db_pass: arandompasswordthatneedschangedhere
-db_root_pass: arandompasswordthatneedschangedhere</p>
-
-<p>```</p>
-
-<p>To keep it simple only the values that should be changed are assigned variables.  Everything else is left with the Puppet defaults in the answer files.</p>
-
-<hr />
-
-<h2>Tasks to be run on all servers</h2>
-
-<p>Puppet needs very perfect name resolution between all agents and the PuppetMaster.  Having a <strong>perfect</strong> hosts file on each server is required.</p>
-
-<p>```
-&ndash; name: Ensure common etc hosts file
-  template:</p>
-
-<pre><code>src="../templates/hosts.j2"
-dest=/etc/hosts
-</code></pre>
-
-<p>```</p>
-
-<p>To keep things simple all the installation tasks will run out of a /puppetinstall directory.  This should be in the user home dir that is running the installer.  The examples here use root but the SysAdmin Bible states never use root always use <strong>sudo</strong>.</p>
-
-<p>```
-&ndash; name: Ensure Puppet installer directory present
-  file:</p>
-
-<pre><code>path=/root/puppetinstall
-state=directory
-</code></pre>
-
-<ul>
-<li>name: Ensure install log present
-file:
-  path=/root/puppetinstall/pupconsole_install.log
-  owner=root
-  state=touch
-```</li>
-</ul>
-
-
-<p>When you download the PE tarball you can grab the download url from S3.  This grabs the version you need and extracts it into the installer dir.</p>
-
-<p>```
-&ndash; name: Ensure PE tarball present
-  get_url:</p>
-
-<pre><code>url=https://s3.amazonaws.com/pe-builds/released//.tar.gz
-dest=/root/peinstaller.tar.gz
-force=no
-</code></pre>
-
-<ul>
-<li>name: Ensure Puppet untar&rsquo;d to install directory
-unarchive:
-  copy=no
-  src=/root/peinstaller.tar.gz
-  dest=/root/puppetinstall</li>
-</ul>
-
-
-<h2>```</h2>
-
-<h2>Tasks that run on each server role</h2>
-
-<p>Each server then runs the same basic installer command with a few things named for each role like the installer log.</p>
-
-<p>Here is the PuppetMasters install-</p>
-
-<h2>```</h2>
-
-<h1>Tasks for PupMaster</h1>
-
-<ul>
-<li><p>name: Ensure install log present
-file:
-  path=/root/puppetinstall/pupmaster_install.log
-  owner=root
-  state=touch</p></li>
-<li><p>name: answer file for PupMaster
-template:
-  src=&ldquo;../templates/pupmaster.answer.j2&rdquo;
-  dest=/root/puppetinstall/pupmaster.answer
-  owner=root</p></li>
-<li><p>name: run the pe installer
-command: /root/puppetinstall//puppet-enterprise-installer -a /root/puppetinstall/pupmaster.answer -l /root/puppetinstall/pupmaster_install.log</p></li>
-</ul>
-
-
-<p>```</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Using GoAccess to parse webserver logs]]></title>
-    <link href="http://e30chris.github.io/using-goaccess-to-parse-webserver-logs/"/>
-    <updated>2014-04-01T23:54:00-07:00</updated>
-    <id>http://e30chris.github.io/using-goaccess-to-parse-webserver-logs</id>
-    <content type="html"><![CDATA[<h1>The Problem</h1>
-
-<p>Need the ability to track web traffic for a specific hours worth of logs.</p>
-
-<h1>The Solution</h1>
-
-<p>Using GoAccess to parse Apache logs that are rotated into hour chunks.</p>
-
-<h1>The Goal</h1>
-
-<p>Install GoAccess to parse webserver logs.  Use Ansible Playbooks for the installation, configuration and for re-usabilty of GoAccess on other servers.  Keep it simple by rotating logs on the hour.</p>
-
-<!-- more -->
-
-
-<h1>The Links</h1>
-
-<ul>
-<li>GoAccess &ndash; <a href="https://github.com/allinurl/goaccess/">real-time web log analyzer &ndash; allinurl/goaccess</a></li>
-<li>Ansible &ndash; <a href="http://docs.ansible.com/">Ansible Docs</a></li>
-<li>Apache rotatelogs &ndash; <a href="https://httpd.apache.org/docs/2.2/programs/rotatelogs.html">Hourly Rotated WebServer Logs</a></li>
-<li>Digital Ocean &ndash; <a href="https://www.digitalocean.com/?refcode=980586449ebd">My referral link, thanks!</a></li>
-<li>TugBoat &ndash; <a href="https://github.com/pearkes/tugboat">CLI for DO &ndash; pearkes/tugboat</a></li>
-</ul>
-
-
-<h1>Ansible Playbook &ndash; Install GoAccess</h1>
-
-<p>Create the GoAccess Playbook.  This installs GoAccess using Apt on Debian.</p>
-
-<script src="https://gist.github.com/e30chris/9929303.js"></script>
-
-
-<p>Run the playbook with Ansible.</p>
-
-<p><code>
-sandor@pineapplez:$ ansible-playbook ~/playbooks/goaccess/goaccess.yml -vvvv
-</code></p>
-
-<h1>GoAccess Usage</h1>
-
-<p>Now that GoAccess is installed on the server we can login and parse the webserver logs.</p>
-
-<p><code>
-sandor@argo:/var/log/apache2$ goaccess -f apache2.log
-</code></p>
-
-<p>GoAccess now parses the log and outputs the results in a configurable format.  You can also export the results into various file formats.</p>
-
-<p>Here is a screenshot that shows how many times an IP has hit the webserver.</p>
-
-<p><img class="<a" src="href="https://s3.amazonaws.com/sandorssystemsscribbles/GoAccessScreen.png">https://s3.amazonaws.com/sandorssystemsscribbles/GoAccessScreen.png</a>"></p>
-
-<p>To keep it simple install Apache rotatelog and set the logs to rollover on the hour.  Then GoAccess can parse the logs by the hour.</p>
-
-<p>Apache rotatelog setting for hourly logs:</p>
-
-<p><code>
-CustomLog "|bin/rotatelogs -l /var/log/apache2.%Y-%m-%d-%H 3600" common
-</code></p>
-
-<p>Parsing a specific hours logs with GoAccess</p>
-
-<p>Example &ndash; Logs for 8am April, 2 2014.</p>
-
-<p><code>
-sandor@argo:/var/log/apache2$ goaccess -f apache2.2014-04-02-08
-</code></p>
 ]]></content>
   </entry>
   

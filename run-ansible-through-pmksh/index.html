@@ -4,10 +4,10 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: linux - Sandors Systems Scribbles</title>
+  <title>Run Ansible through pmksh - Sandors Systems Scribbles</title>
   <meta name="author" content="chris">
 
-  <meta name="description" content="Category: linux">
+  
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -16,7 +16,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://e30chris.github.iocategories/linux">
+  <link rel="canonical" href="http://e30chris.github.io/run-ansible-through-pmksh">
   <link href="/favicon.png" type="image/png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="Sandors Systems Scribbles" type="application/atom+xml">
 
@@ -58,10 +58,10 @@
 
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li >
+                <li class="active">
                     <a href="/">Blog</a>
                 </li>
-                <li class="active">
+                <li >
                     <a href="/blog/archives">Archives</a>
                 </li>
             </ul>
@@ -92,70 +92,147 @@
         <div id="content">
           <div class="row">
   <div class="page-content col-md-9">
-    <article role="article">
+    <article class="hentry" role="article">
       
-        <header class="page-header">
+  <header class="page-header">
+    
+      <p class="meta text-muted text-uppercase">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-09-03T11:53:00-07:00" pubdate data-updated="true">Sep 3<span>rd</span>, 2014</time>
+        
+      </p>
+    
+    
+    <h1 class="entry-title">
+        Run Ansible Through Pmksh
+        
+    </h1>
+    
+  </header>
+
+
+<div class="entry-content clearfix"><h2>The problem</h2>
+
+<p>Old corporations use shitty old software to do things that modern Linux is really good at doing itself.  Using pmksh instead of a well laid out sudoers setup is what the problem is.</p>
+
+<h2>The goal</h2>
+
+<p>Configure Ansible playbooks to execute through the pmksh shell on the targeted servers.</p>
+
+<!-- more -->
+
+
+<h2>Shells &amp; Ansible</h2>
+
+<p>Currently Ansible &amp; Python work together to take the output from bash and report back with formatting.  Ansible does not understand ksh talk making running through pmksh a workaround for now.  Once Ansible add ksh to its list of shells then the current set of playbooks that are using &lsquo;command&rsquo; can move to using the full suite of modules.</p>
+
+<p>The AIX setup I am Ansiblizing now using bash shell for standard user commands and pmksh for all root level (yes it should be sudoers) commands.  Tasks that do not need root level permissions I am using standard modules.  Tasks that need root I am using the following HowTo.</p>
+
+<p>Ansible Shells:</p>
+
+<p><a href="https://github.com/ansible/ansible/tree/devel/lib/ansible/runner/shell_plugins">github repo &ndash; ansible/ansible/tree/devel/lib/ansible/runner/shell_plugins</a></p>
+
+<h2>HowTo</h2>
+
+<p>Current Workaround:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sandor@pineapplez:$ ansible -i hosts all -m command -a "/opt/quest/bin/pmksh -c '/bin/touch /root/bmw.325'"</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>tasks:
+</span><span class='line'>
+</span><span class='line'>- name: run a command through pmksh
+</span><span class='line'>  command: "/opt/quest/bin/pmksh -c /bin/touch /root/bmw.325'"</span></code></pre></td></tr></table></div></figure>
+
+
+<p><em>once ksh is added to the list of shells I will update this post</em></p>
+</div>
+
+
+      <footer>
+        <p class="meta text-muted">
           
+  
+
+<span class="glyphicon glyphicon-user"></span> <span class="byline author vcard">Posted by <span class="fn">chris</span></span>
+
           
-            <h1 class="entry-title">
-              Category: Linux
-              
-            </h1>
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-09-03T11:53:00-07:00" pubdate data-updated="true">Sep 3<span>rd</span>, 2014</time>
           
-        </header>
-      
-      <div class="entry-content">
-        <div id="blog-archives" class="category">
-
-
-
-  
-  <h2>2014</h2>
-
-<article class="page-header">
-  
-<h1><a href="/using-goaccess-to-parse-webserver-logs/">Using GoAccess to parse webserver logs</a></h1>
-<p class="meta text-muted">
-  
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-04-01T23:54:00-07:00" pubdate data-updated="true">Apr 1<span>st</span>, 2014</time>
-  
 
 <span class="glyphicon glyphicon-tags"></span>&nbsp;
 <span class="categories">
   
-    <a class='category' href='/categories/ansible/'>ansible</a>, <a class='category' href='/categories/linux/'>linux</a>
+    <a class='category' href='/categories/ansible/'>ansible</a>
   
 </span>
 
 
-</p>
-
-</article>
-
+        </p>
+        
+          <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://e30chris.github.io/run-ansible-through-pmksh/" data-via="e30chris" data-counturl="http://e30chris.github.io/run-ansible-through-pmksh/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
 </div>
 
-      </div>
-      
+        
+        
+          <ul class="meta text-muted pager">
+            
+            <li class="previous"><a href="/using-ansible-to-align-passwords-on-servers/" title="Previous Post: Using Ansible to Align Passwords on Servers">&laquo; Using Ansible to Align Passwords on Servers</a></li>
+            
+            
+            <li class="next"><a href="/ansible-on-redhat-5-dot-x/" title="Next Post: Ansible on RedHat 5.x">Ansible on RedHat 5.x &raquo;</a></li>
+            
+          </ul>
+        
+      </footer>
     </article>
     
   </div>
 
   
-    <aside class="sidebar col-md-3">
-      
-        <section class="panel panel-default">
+  <aside class="sidebar col-md-3">
+    
+      <section class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">Recent Posts</h3>
   </div>
@@ -166,7 +243,7 @@
     
     <a class="list-group-item " href="/ansible-on-redhat-5-dot-x/">Ansible on RedHat 5.x</a>
     
-    <a class="list-group-item " href="/run-ansible-through-pmksh/">Run Ansible Through Pmksh</a>
+    <a class="list-group-item active" href="/run-ansible-through-pmksh/">Run Ansible Through Pmksh</a>
     
     <a class="list-group-item " href="/using-ansible-to-align-passwords-on-servers/">Using Ansible to Align Passwords on Servers</a>
     
@@ -217,7 +294,7 @@
       </a>
     
     
-    <a class="list-group-item active" href="/categories/linux/index.html">
+    <a class="list-group-item " href="/categories/linux/index.html">
         <span class="badge">1</span>
         linux
       </a>
@@ -278,8 +355,8 @@
 
 
 
-      
-    </aside>
+    
+  </aside>
   
 </div>
 
